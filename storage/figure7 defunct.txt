@@ -1,0 +1,54 @@
+(ref:figure7) Sablefish catch per unit effort (CPUE) by depth and year for StRS sets. Dashed lines delineate depth strata (shallow(RD~1~) = 100-450m, mid(RD~2~) = 450-850m, deep(RD~3~) = 850-1400m).
+
+```{r figure7, fig.cap='(ref:figure7)',echo=FALSE, fig.align = "center",warning=FALSE}
+    par(mfcol=c(3,3))
+
+    #   results='asis',echo=FALSE,include=FALSE,warning=FALSE,message = FALSE,error= FALSE
+    png(paste(figpath,'Figure7.png', sep=""), width = 448, height = 628)  # write png to folder
+
+    #   query----------raw survey datafile for Landmark fisher  ies----------------
+
+    landmrk <- paste("select * from OM_RawLandmarkSurveyData", sep="")
+    # raw_survey_data<- GetSQLData(landmrk,"Sablefish")
+    raw_survey_data <- read.csv(paste(path,'figure8.csv',sep=''),header=T)
+    
+    # load survey data 
+    strs01            <- subset(raw_survey_data,SABLE_SET_TYPE=="StRS")           # subset on StRS sets
+    strs01$sable_cpue <- strs01$CPUE_SABLE_WEIGHT/strs01$CPUE_TRAPS               # wt/trap, changed from TOTAL_TRAPS to CPUE_TRAPS
+    strs01$sable_cnts <- strs01$CPUE_SABLE_COUNT/strs01$CPUE_TRAPS                # count/trap,
+    strs01$sable_wt   <- strs01$CPUE_SABLE_WEIGHT/strs01$CPUE_SABLE_COUNT         # average weight
+    strs01$strata     <- paste(strs01$SABLE_AREA_GROUP,strs01$SABLE_DEPTH_GROUP)  # area + depth strata
+    
+    strs02            <- arrange(transform(strs01,strata=factor(strata,levels=rev(unique(strs01$strata)))),strata)
+    tgc01             <- summarySE(strs02, measurevar="sable_cpue", groupvars=c("SET_YEAR","strata"),na.rm = T)
+    tgc.02            <- arrange(transform(tgc01,strata=factor(strata,
+                                                               levels = c("S5 RD3", "S5 RD2", "S5 RD1", 
+                                                                          "S4 RD3", "S4 RD2", "S4 RD1", 
+                                                                          "S3 RD3", "S3 RD2", "S3 RD1", 
+                                                                          "S2 RD3", "S2 RD2", "S2 RD1",
+                                                                          "S1 RD3", "S1 RD2", "S1 RD1" ))),strata)
+    
+
+     # drop 2003 and 2004 and set panel ordering for aesthetics
+     strs.02 <- arrange(transform(strs01[strs01$SET_YEAR>2002 & strs01$SET_YEAR<2012,],
+                                SET_YEAR=factor(SET_YEAR,levels=c(2003,2004,2005,
+                                                                  2006,2007,2008,
+                                                                  2009,2010,2011
+                                                                  ))),SET_YEAR)
+    
+    ggplot( strs.02,aes(x=FE_MODAL_BOTTOM_DEPTH,y=CPUE_SABLE_WEIGHT/CPUE_TRAPS)) +
+            geom_point(alpha = 3/5,color="steelblue")+
+            facet_wrap(~SET_YEAR,ncol=4)+
+            scale_x_continuous(breaks = c(100,450,850,1400),limits=c(0,1500)) + 
+            geom_vline(xintercept=c(450), linetype="dashed", color="steelblue") +
+            geom_vline(xintercept=c(850), linetype="dashed", color="steelblue") +
+            xlab("Depth (m)") +
+            ylab("CPUE (kg/trap)") +
+            theme_bw()
+
+    while (!is.null(dev.list()))  dev.off()
+    img    <-  paste(figpath,'figure7.png',sep="")   # retrieve png 
+               knitr::include_graphics(img)
+  
+```
+\clearpage
