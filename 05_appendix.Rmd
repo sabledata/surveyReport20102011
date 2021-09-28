@@ -166,8 +166,8 @@ Details of sets completed during the `r yr` survey program (F/V `r boat1`).  Set
    options(knitr.kable.NA = '')  # get rid of NAs
 
    srvy.sets <-  paste("dbo.procRReport_Survey_SetDetails ", yr,",1,", 153, sep="")
-   srvy.set.details     <-  GetSQLData(srvy.sets,"Sablefish")   # query SQL Server for set details year 1
-   write.table(srvy.set.details, file = paste(path,"appendixE.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #srvy.set.details     <-  GetSQLData(srvy.sets,"Sablefish")   # query SQL Server for set details year 1
+   #write.table(srvy.set.details, file = paste(path,"appendixE.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    srvy.set.details   <-  read.csv(paste(path,'appendixE.csv', sep=''), header=T)
    inlet.sets         <-  srvy.set.details[srvy.set.details$set_type=='Inlet',]
    start.inlet        <-  min(inlet.sets$set)
@@ -258,8 +258,8 @@ Details of sets completed during the `r yr` survey program (F/V `r boat1`).  Set
 ```{r appendixF, echo=FALSE}
    options(knitr.kable.NA = '')  # get rid of NAs
    srvy.sets <-  paste("dbo.procRReport_Survey_SetDetails ", yr+1,", 1,", 132, sep="")
-   srvy.set.details     <-  GetSQLData(srvy.sets,"Sablefish")   # query SQL Server for set details year 1
-   write.table(srvy.set.details, file = paste(path,"appendixF.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #srvy.set.details     <-  GetSQLData(srvy.sets,"Sablefish")   # query SQL Server for set details year 1
+   #write.table(srvy.set.details, file = paste(path,"appendixF.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    srvy.set.details2   <-  read.csv(paste(path,'appendixF.csv',sep=''),header=T)
    inlet.sets2         <-  srvy.set.details2[srvy.set.details2$set_type=='Inlet',]
    start.inlet2        <-  min(inlet.sets2$set)
@@ -355,22 +355,21 @@ Summary of the basket use by trap number for sets during the `r yr` sablefish su
    #write.table(trap.Usage , file = paste(path,"appendixG.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    trap.Usage    <-  read.csv(paste(path,'appendixG.csv',sep=''),header=T)
    
-   
    #prep images
-     trap.set         <-  srvy.set.details[ ,c(-1,-4:-18), ]
+     trap.set.yr1         <-  srvy.set.details[ ,c(-1,-4:-18), ]
      addition         <-  c(8,"StRS")
      addition2        <-  c(11,"StRS")
-     trap.set         <-  rbind(trap.set,addition)
-     trap.set         <-  rbind(trap.set,addition2)
-     names(trap.set)  <-  c("surveyset","Type")
+     trap.set.yr1         <-  rbind(trap.set.yr1,addition)
+     trap.set.yr1         <-  rbind(trap.set.yr1,addition2)
+     names(trap.set.yr1)  <-  c("surveyset","Type")
      
-     trap.set$count   <- 100
-     trap.set         <- trap.set%>%  # set background color
+     trap.set.yr1$count   <- 100
+     trap.set.yr1         <- trap.set.yr1%>%  # set background color
                          mutate(get.color = ifelse(Type %in% c("OffStd") , "gray",  "white"))
-     trap.set$get.color[trap.set$Type=='Inlet']  <- "light green"
-     #head(trap.set)
+     trap.set.yr1$get.color[trap.set.yr1$Type=='Inlet']  <- "light green"
+     #head(trap.set.yr1)
      
-     w   <-  trap.set %>%
+     w   <-  trap.set.yr1 %>%
      group_by(surveyset) %>%
      do({
        p <- ggplot(., aes(y = count, x = 1, label=.$surveyset)) + 
@@ -435,7 +434,6 @@ Summary of the basket use by trap number for sets during the `r yr` sablefish su
                      repeat_header_method = "replace") %>%  
       
    kableExtra::landscape()  %>%
-       #row_spec(38:52, color="blue"  )       %>%      # unique inlet rows as blue for 2018
        row_spec(0, bold =  TRUE) %>%
        column_spec(1,width      = "0.8cm") %>%
        column_spec(2,width      = "0.2cm") %>%
@@ -470,6 +468,7 @@ Summary of the basket use by trap number for sets during the `r yr` sablefish su
        column_spec(31,width     = "0.2cm")
 ```
 
+
 # SUMMARY OF BASKET USE BY TRAP `r yr+1`. {#app:eighth-appendix} 
 
 Summary of the basket use by trap number for sets during the `r yr+1` sablefish survey. Set numbers highlighted in blue represent exploratory sets and set numbers highlighted in green represent standardized sets at mainland inlet localities. All other sets are of the StRS type. The fate of the sablefish catch for each set and trap is indicated using the following abbreviations:  D = Discarded after weighing  (released at sea), A = Sampled for LSMWO, T = Tagged and released, F= Frames, NA = No sablefish catch/trap missing. 
@@ -482,33 +481,33 @@ Summary of the basket use by trap number for sets during the `r yr+1` sablefish 
 
    trapUse       <- paste("dbo.procRReport_Survey_TrapUse ",yr+1,",1,",132, sep="")
    #trap.Usage    <- GetSQLData(trapUse,"Sablefish")  # query SQL Server for basket use on each trap year 1
-   write.table(trap.Usage , file = paste(path,"appendixH.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #write.table(trap.Usage , file = paste(path,"appendixH.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    trap.Usage    <-  read.csv(paste(path,'appendixH.csv',sep=''),header=T)
    
-     #prep images
-     trap.set2         <-  srvy.set.details2[ ,c(-1,-4:-18), ]
-     #addition         <-  c(8,"StRS")
-     #addition2        <-  c(11,"StRS")
-     #trap.set         <-  rbind(trap.set,addition)
-     #trap.set         <-  rbind(trap.set,addition2)
-     names(trap.set2)  <-  c("surveyset","Type")
-     
-     trap.set2$count   <- 100
-     trap.set2         <- trap.set2%>%  # set background color
-                          mutate(get.color = ifelse(Type %in% c("explore") , "light blue",  "white"))
-     trap.set2$get.color[trap.set2$Type=='Inlet']  <- "light green"
-     #head(trap.set2)
-     
-     w   <-  trap.set2 %>%
-     group_by(surveyset) %>%
-     do({
-       p <- ggplot(., aes(y = count, x = 1, label=.$surveyset)) + 
-              geom_bar(stat="identity", color="white",fill=.$get.color) +
-                 ylim(0, 100) +
-                 theme_void() +
-                 geom_text(size=8,vjust = 1.3)
-      #ggsave(p, filename = paste0("sets2_", unique(.$surveyset), ".png"), width = 1.2, height = 0.5)   # save time comment out
-      invisible(.) })
+           # prep images for set number and colour coded set types
+           trap.set.yr2         <-  srvy.set.details[ ,c(-1,-4:-18), ]
+           addition         <-  c(8,"StRS")
+           addition2        <-  c(11,"StRS")
+           trap.set.yr2         <-  rbind(trap.set.yr2,addition)
+           trap.set.yr2         <-  rbind(trap.set.yr2,addition2)
+           names(trap.set.yr2)  <-  c("surveyset","Type")
+           
+           trap.set.yr2$count   <- 100
+           trap.set.yr2         <- trap.set.yr2%>%  # set background color
+                            mutate(get.color = ifelse(Type %in% c("OffStd") , "gray",  "white"))
+           trap.set.yr2$get.color[trap.set.yr2$Type=='Inlet']  <- "light green"
+           #head(trap.set.yr2)
+           
+           w   <-  trap.set.yr2 %>%
+           group_by(surveyset) %>%
+           do({
+             p <- ggplot(., aes(y = count, x = 1, label=.$surveyset)) + 
+                    geom_bar(stat="identity", color="white",fill=.$get.color) +
+                       ylim(0, 100) +
+                       theme_void() +
+                       geom_text(size=8,vjust = 1.3)
+           #ggsave(p, filename = paste0("sets_", unique(.$surveyset), ".png"), width = 1.2, height = 0.5)  # save time comment out
+           invisible(.) })
 
    
    trap.Usage    <- trap.Usage [,c(-1)]    # delete trip_id
@@ -633,7 +632,7 @@ library(ggplot2)
                        " having  (tp.YEAR IN (",yr,")) order by SET_ID, BECKET, TRAP",sep="")
     
    #trap.sable1   <- GetSQLData(trap.count,"Sablefish")
-   write.table(trap.sable1, file = paste(path,"appendixISetUp.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+   #write.table(trap.sable1, file = paste(path,"appendixISetUp.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
    trap.sable1  <-  read.csv(paste(path,'appendixISetUp.csv',sep=''), header=T)
 
    library(tidyverse)
@@ -675,23 +674,23 @@ Specimen counts of biological data collected for sablefish by set, including cat
    library(huxtable)
    setcnt1 = 153
    samples           <-  paste("dbo.procReport_Survey_SampleDetails ", yr ,",1,",setcnt1, sep="")
-   surveyspec       <-  GetSQLData(samples,"Sablefish")  # query SQL Server
-   write.table(surveyspec, file = paste(path,"appendixI.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
+   #surveyspec       <-  GetSQLData(samples,"Sablefish")  # query SQL Server
+   #write.table(surveyspec, file = paste(path,"appendixI.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
    surveyspec        <-  read.csv(paste(path,'appendixI.csv',sep=''),header=T)
    count.row.total   <-  length(surveyspec$SET)
    count.row         <-  length(surveyspec$SET) - 1
    surveyspec$SET[count.row.total] <- "Total"
 
+   # add in sparkline graph count by trap
    surveyspec <-  surveyspec %>%
-                  mutate(Sparkline = paste0("\\raisebox{.12\\height} {\\includegraphics[width=2cm]{fig",SET,".png}}") )    
+                  mutate(Sparkline = paste0("\\raisebox{.22\\height} {\\includegraphics[width=1.9cm]{fig",SET,".png}}") )
+      
+   surveyspec  <- surveyspec  %>%    
+                   mutate(Survey.set= paste0("\\raisebox{-.28\\height} {\\includegraphics[width=0.8cm]{sets_",SET,".png}}") ) 
    
-   colnames(surveyspec) <-  c("Set", "kg", "Count", "Recover-Rerelease", "Deceased", "Released", 
-                              "Count",  "Mean", "Fork Length", "Sex", "Maturity", "Otoliths",
-                              "Weight", "Count", "Proportion Males", "Males", "Females")
-   
-   surveyspec <-  surveyspec[, c(1,2,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17)]  # reorder table
-   
-   colnames(surveyspec) <- c("", "kg","Count","Count by Trap","Recover-Rerelease", "Deceased", "Released", 
+   surveyspec <-  surveyspec[, c(19,2,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17)]  #reorder table
+
+   colnames(surveyspec) <- c("", "kg","Count","Count by Trap","Recover-Rerelease", "Sampled", "Released", 
                              "Count", "Mean", "Fork Length", "Sex","Maturity", "Otoliths",
                              "Weight","Count","Proportion Males", "Males", "Females" )
    
@@ -711,7 +710,7 @@ Specimen counts of biological data collected for sablefish by set, including cat
                       "Specimen Count"= 6, 
                       "Mean Fork Length(mm)" = 3), bold = TRUE) %>%
       
-   kableExtra::kable_styling(font_size = 8, 
+   kableExtra::kable_styling(font_size = 7.5, 
                      latex_options = "repeat_header",
                      repeat_header_text = "continued.", 
                      repeat_header_method = "replace") %>%     
@@ -773,8 +772,8 @@ library(ggplot2)
                        " GROUP BY fe.FE_MAJOR_LEVEL_ID, fe.TRIP_ID, tp.YEAR, fe.FE_SUB_LEVEL_ID, fe.FE_MINOR_LEVEL_ID",
                        " having  (tp.YEAR IN (",yr+1,")) order by SET_ID, BECKET, TRAP",sep="")
     
-   trap.sable1   <- GetSQLData(trap.count,"Sablefish")
-   write.table(trap.sable1, file = paste(path,"appendixJSetUp.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+   #trap.sable1   <- GetSQLData(trap.count,"Sablefish")
+   #write.table(trap.sable1, file = paste(path,"appendixJSetUp.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
    trap.sable1  <-  read.csv(paste(path,'appendixJSetUp.csv',sep=''), header=T)
 
 
@@ -819,27 +818,24 @@ Specimen counts of biological data collected for sablefish by set, including cat
 
    setcnt2           <-  132
    samples2          <-  paste("dbo.procReport_Survey_SampleDetails ", yr+1,",1,", setcnt2, sep="")
-   surveyspec2       <-  GetSQLData(samples2,"Sablefish")  # query SQL Server
-   write.table(surveyspec2, file = paste(path,"appendixJ.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+   #surveyspec2       <-  GetSQLData(samples2,"Sablefish")  # query SQL Server
+   #write.table(surveyspec2, file = paste(path,"appendixJ.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
    surveyspec2       <-  read.csv(paste(path,'appendixJ.csv',sep=''),header=T)
    count.row.total   <-  length(surveyspec2$SET)
    count.row         <-  length(surveyspec2$SET) - 1
    surveyspec2$SET[count.row.total] <- "Total"
    #   View(surveyspec2)
   
-   # add in sparkline 
-   surveyspec2 <-  surveyspec2 %>%    
-                  mutate(Sparkline = paste0("\\raisebox{.12\\height} {\\includegraphics[width=2cm]{fig2_",SET,".png}}") ) 
-
-   colnames(surveyspec2) <-  c( "", "kg", "Count", "Recover-Rerelease", 
-                                "Deceased", "Released", "Count",  
-                                "Mean",     "Fork Length", "Sex", "Maturity", "Otoliths",
-                                "Weight",   "Count", 
-                                "Proportion Males", "Males", "Females")
- 
-   surveyspec2 <-  surveyspec2[, c(1, 2, 3, 18, 4,5,6,7,8,9,10,11,12,13,14,15,16,17) ]  #reorder table
+ # add in sparkline graph count by trap
+   surveyspec2 <- surveyspec2 %>%
+                  mutate(Sparkline = paste0("\\raisebox{.22\\height} {\\includegraphics[width=1.9cm]{fig",SET,".png}}") )
+      
+   surveyspec2  <- surveyspec2  %>%    
+                   mutate(Survey.set= paste0("\\raisebox{-.28\\height} {\\includegraphics[width=0.8cm]{sets_",SET,".png}}") ) 
    
-   colnames(surveyspec2) <- c("", "kg","Count","Count by Trap","Recover-Rerelease", "Deceased", "Released", 
+   surveyspec2 <-  surveyspec2[, c(19,2,3,18,4,5,6,7,8,9,10,11,12,13,14,15,16,17)]  #reorder table
+
+   colnames(surveyspec2) <- c("", "kg","Count","Count by Trap","Recover-Rerelease", "Sampled", "Released", 
                               "Count", "Mean", "Fork Length", "Sex","Maturity", "Otoliths",
                               "Weight","Count","Proportion Males", "Males", "Females" )
    
@@ -859,7 +855,7 @@ Specimen counts of biological data collected for sablefish by set, including cat
                       "Specimen Count"= 6, 
                       "Mean Fork Length(mm)" = 3), bold = TRUE) %>%
       
-   kableExtra::kable_styling(font_size = 8, 
+   kableExtra::kable_styling(font_size = 7.5, 
                      latex_options = "repeat_header",
                      repeat_header_text = "continued.", 
                      repeat_header_method = "replace") %>%     
@@ -922,8 +918,8 @@ Biological data collected for rougheye/blackspotted rockfish complex in `r yr`. 
                            "dbo.GFBIO_RESEARCH_SAMPLE_DETAILS_OTHER_FISH.species ",            
                            "where (dbo.GFBIO_RESEARCH_SAMPLE_DETAILS_OTHER_FISH.Year = ",yr, 
                            ") and (species_name='ROUGHEYE/BLACKSPOTTED ROCKFISH COMPLEX') order by species,[SET]", sep="")
-   otherspec2            <-  GetSQLData(othersamples,"Sablefish")   # read from SQL Server
-   write.table(otherspec2, file = paste(path,'appendixK.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
+   #otherspec2            <-  GetSQLData(othersamples,"Sablefish")   # read from SQL Server
+   #write.table(otherspec2, file = paste(path,'appendixK.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
    otherspec2              <-  read.csv(paste(path,'appendixK.csv',sep=''),header=T) # read from csv
    otherspec2$species_name <-  as.character(otherspec2$species_name)
    otherspec2$species_name <-  gsub('ROUGHEYE/BLACKSPOTTED ROCKFISH COMPLEX', 'ROUGHEYE/ BLACKSPOTTED ROCKFISH COMPLEX', otherspec2$species_name)
@@ -1019,8 +1015,8 @@ Biological data collected for rougheye/blackspotted rockfish complex in `r yr + 
                            "dbo.GFBIO_RESEARCH_SAMPLE_DETAILS_OTHER_FISH.species ",            
                            "where (dbo.GFBIO_RESEARCH_SAMPLE_DETAILS_OTHER_FISH.Year = ",yr+1, 
                            ") and (species_name='ROUGHEYE/BLACKSPOTTED ROCKFISH COMPLEX') order by species,[SET]", sep="")
-   otherspec2            <-  GetSQLData(othersamples,"Sablefish")   # read from SQL Server
-   write.table(otherspec2, file = paste(path,'appendixL.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
+   #otherspec2            <-  GetSQLData(othersamples,"Sablefish")   # read from SQL Server
+   #write.table(otherspec2, file = paste(path,'appendixL.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
    otherspec2              <-  read.csv(paste(path,'appendixL.csv',sep=''),header=T) # read from csv
    otherspec2$species_name <-  as.character(otherspec2$species_name)
    otherspec2$species_name <-  gsub('ROUGHEYE/BLACKSPOTTED ROCKFISH COMPLEX', 'ROUGHEYE/ BLACKSPOTTED ROCKFISH COMPLEX', otherspec2$species_name)
@@ -1250,8 +1246,8 @@ Details of biological data collected from species other than sablefish or roughe
                            "order by morph_type, species_name, [SET]", sep="") 
    #  pre-caudal lengths and total lengths were taken for the tagged spiny dogfish and regular fish, 
    #  so include only length counts > 0
-   other.species            <-  GetSQLData(other.samples,"Sablefish")   # read from SQL Server
-   write.table(other.species, file = paste(path,'appendixN.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
+   #other.species            <-  GetSQLData(other.samples,"Sablefish")   # read from SQL Server
+   #write.table(other.species, file = paste(path,'appendixN.csv',sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")   
    other.species              <-  read.csv(paste(path,'appendixN.csv',sep=''),header=T) # read from csv
    
    other.species$species_name <-  as.character(other.species$species_name)

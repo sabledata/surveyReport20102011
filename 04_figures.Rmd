@@ -59,8 +59,8 @@
      #  query----------raw survey datafile for Landmark fisher  ies----------------
 
     landmrk <- paste("select * from OM_RawLandmarkSurveyData", sep="")
-    raw_survey_data<- GetSQLData(landmrk,"Sablefish")
-    write.table(raw_survey_data, file = paste(path,"figure7.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+    #raw_survey_data<- GetSQLData(landmrk,"Sablefish")
+    #write.table(raw_survey_data, file = paste(path,"figure7.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
     raw_survey_data <- read.csv(paste(path,'figure7.csv',sep=''),header=T)
     
     # load survey data 
@@ -306,8 +306,8 @@
     png(paste(figpath,'figure11.png', sep=""), width = 648, height = 828)  # write png to folder
     library(Rmisc)                       
     cpuedt    <-  "SELECT  * from dbo.GENERIC_GFBIO_TRAPS where year < 2012 and [Spatial.Stratum] not like '%Quatsino Sound%' "
-    cpuedat  <-  GetSQLData(cpuedt,"Sablefish") 
-    write.table(cpuedat, file = paste(path,"figure10.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+    #cpuedat  <-  GetSQLData(cpuedt,"Sablefish") 
+    #write.table(cpuedat, file = paste(path,"figure10.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
     cpuedat   <-  read.csv(paste(path,'figure10.csv',sep=''),header=T)
     
     # pick out the stand sets
@@ -406,8 +406,8 @@
 
     library(Rmisc)                       
     cpuedt    <-  "SELECT  * from dbo.GENERIC_GFBIO_TRAPS where year < 2012 and [Spatial.Stratum] not like '%Quatsino Sound%' "
-    cpuedat   <-  GetSQLData(cpuedt,"Sablefish") 
-    write.table(cpuedat, file = paste(path,"figure12.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+    #cpuedat   <-  GetSQLData(cpuedt,"Sablefish") 
+    #write.table(cpuedat, file = paste(path,"figure12.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
     cpuedat   <-  read.csv(paste(path,'figure12.csv',sep=''),header=T)
 
 
@@ -506,8 +506,8 @@
     # -- from procedure Build_BIO_Sablefish_Tables for the histogram of lengths
     
     lengthdat.StRS     <-   "exec procReport_Survey_LenMF"   # StRS lengths for sex 0,1,2  
-    lengthdata.StRS    <-   GetSQLData(lengthdat.StRS,"Sablefish")
-    write.table(lengthdata.StRS, file = paste(path,'figure13.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+    #lengthdata.StRS    <-   GetSQLData(lengthdat.StRS,"Sablefish")
+    #write.table(lengthdata.StRS, file = paste(path,'figure13.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
     lengthdata.StRS    <- read.csv(paste(path,"figure13.csv",sep=""), header=T)
     
     fdat      <- lengthdata.StRS[lengthdata.StRS$sex==2,]
@@ -587,8 +587,8 @@
     #  procedure:  Build_BIO_Sablefish_Tables
      
     lenstats  <- "exec procRReport_Survey_LenAvg"
-    dat       <- GetSQLData(lenstats,"Sablefish") 
-    write.table(dat, file = paste(path,"figure13a.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
+    #dat       <- GetSQLData(lenstats,"Sablefish") 
+    #write.table(dat, file = paste(path,"figure13a.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
     dat       <- read.csv(paste(path,'figure13a.csv', sep=''),header=T) # read from csv
     dat       <- dat[dat$YEAR <= yr+1, ]
     # unique(dat$SABLE_SET_TYPE)   # should be only StRS
@@ -647,8 +647,8 @@
       #  procedure:  Build_BIO_Sablefish_Tables
 
       lendat.Off     <-   "exec procR_Survey_Sablefish_LenMF"   # offshore lengths for all set types
-      lendata.Off    <-   GetSQLData(lendat.Off,"Sablefish")
-      write.table(lendata.Off, file = paste(path,'figure14.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+      #lendata.Off    <-   GetSQLData(lendat.Off,"Sablefish")
+      #write.table(lendata.Off, file = paste(path,'figure14.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
       lendata.Off    <-    read.csv(paste(path,'figure14.csv',sep=''),header=T) 
       lendata.Off    <-    lendata.Off[lendata.Off$SABLE_SET_TYPE == "OFFSHORE STANDARDIZED",]
       
@@ -720,8 +720,8 @@
                             "group by  YEAR, SABLEFISH_SURVEY_IND, SPECIMEN_SEX_CODE, SABLE_SET_TYPE ",
                             "having   (SPECIMEN_SEX_CODE IN (1, 2)) AND (SABLE_SET_TYPE = N'OFFSHORE STANDARDIZED') AND (YEAR >= 1990) ",
                             "order by  sex, YEAR", sep="")
-     dat.lenstats.Off  <- GetSQLData(lenstats.Off ,"Sablefish") 
-     write.table(dat.lenstats.Off, file = paste(path,"figure14a.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
+     #dat.lenstats.Off  <- GetSQLData(lenstats.Off ,"Sablefish") 
+     #write.table(dat.lenstats.Off, file = paste(path,"figure14a.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",")
      dat.lenstats.Off  <- read.csv(paste(path,'figure14a.csv', sep=''),header=T) # read from csv
      dat.lenstats.Off  <- dat.lenstats.Off[dat.lenstats.Off$YEAR <= yr, ]  # unique to 2010
      
@@ -778,8 +778,8 @@
     par(xpd=NA)  # for placement of A,B,C,D
 
     lenWT     <- "exec procR_Survey_Sablefish_LenWt_shiny"
-    lenWTdat1 <- GetSQLData(lenWT,"Sablefish") 
-    write.table(lenWTdat1, file = paste(path,"figure15.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") # read from SQL Server
+    #lenWTdat1 <- GetSQLData(lenWT,"Sablefish") 
+    #write.table(lenWTdat1, file = paste(path,"figure15.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") # read from SQL Server
     lenWTdat1 <- read.csv(paste(path,'figure15.csv',sep=''), header=T) # read from csv
     lenWTdat  <- lenWTdat1[lenWTdat1$YEAR==yr,]
 
@@ -875,8 +875,8 @@
    png(paste(figpath,'figure16.png',sep=''), width = 800, height = 924)  # -- starts writing a png to figure folder
 
    dt   <-  paste("select * from Report_Survey_GFBIO_Age_MF_Prop where SetType='StRS' and Year<=", yr+1, sep="")
-   dat  <-  GetSQLData(dt,"Sablefish")   
-   write.table(dat, file = paste(path,"figure16.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #dat  <-  GetSQLData(dt,"Sablefish")   
+   #write.table(dat, file = paste(path,"figure16.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    dat  <-  read.csv(paste(path,"figure16.csv", sep=''), header=T) # read from csv
 
    par(mfrow=c(2,1),cex=1.1)     # -- two vertical plots
@@ -946,8 +946,8 @@
    par(xpd=NA)
 
    dt.age.off   <-  paste("select * from Report_Survey_GFBIO_Age_MF_Prop where SetType='Offshore Standardized' and Year<=", yr+1, sep="")
-   dat.age.off  <-  GetSQLData(dt.age.off,"Sablefish")   
-   write.table(dat.age.off, file = paste(path,"figure17.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #dat.age.off  <-  GetSQLData(dt.age.off,"Sablefish")   
+   #write.table(dat.age.off, file = paste(path,"figure17.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    dat.age.off  <-  read.csv(paste(path,"figure17.csv", sep=''), header=T) # read from csv
    #  View(dat.age.off)
 
@@ -1025,8 +1025,8 @@
    
       # table SEABIRD_ReportCoplot created in the Sablefish.dbo.Build_Seabird_tables procedure
       sbecp     <- paste("select * from SEABIRD_ReportCoplot where Year in(", yr,",", yr+1,")",sep="")
-      ctddat    <- GetSQLData(sbecp,"Sablefish")        
-      write.table(ctddat, file = paste(path,"figure18.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+      #ctddat    <- GetSQLData(sbecp,"Sablefish")        
+      #write.table(ctddat, file = paste(path,"figure18.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
       ctddat    <-  read.csv(paste(path,"figure18.csv", sep=''), header=T) # read from csv
 
       par(mar=c(1,1,1,1.4),cex=2.2)           # -- par(mar=c(bottom,left,top,right) 
@@ -1100,8 +1100,8 @@
     
       png(paste(figpath,'figure19.png',sep=''), width=600, height=700) # write png to file
       sea.bird           <-  "select * from SEABIRD_AverageTempPerSet where depth_stratum in('RD1','RD2','RD3') and Year < 2012"
-      sea.bird.ridge     <-  GetSQLData(sea.bird,"Sablefish")   # read from SQL Server
-      write.table(sea.bird.ridge, file = paste(path,"figure19.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+      #sea.bird.ridge     <-  GetSQLData(sea.bird,"Sablefish")   # read from SQL Server
+      #write.table(sea.bird.ridge, file = paste(path,"figure19.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
       sea.bird.ridge     <-  read.csv(paste(path,'figure19.csv',sep=''),header=T)    #  read from csv
       weather.raw2       <-  sea.bird.ridge[order(- sea.bird.ridge$Year,  sea.bird.ridge$Sets),]
       weather.raw2$years <-  factor(weather.raw2$Year,levels=rev(unique(weather.raw2$Year)))

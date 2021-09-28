@@ -261,8 +261,8 @@ library(formattable)
                         "LEFT(CONVERT(varchar, START_DATE, 100),7) + ' - ' + ",
                         "LEFT(CONVERT(varchar, END_DATE, 100),7)", 
                          sep="")
-   survey.details  <-  GetSQLData(details,"Sablefish")  # -- survey details query SQL Server
-   write.table(survey.details, file = paste(path,"index01.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+   #survey.details  <-  GetSQLData(details,"Sablefish")  # -- survey details query SQL Server
+   #write.table(survey.details, file = paste(path,"index01.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    survey.details   <- read.csv(paste(path,'index01.csv', sep=''),header=T)  
    
    boat1       <- simpleCap(tolower(survey.details[1,1]))      # -- vessel name year 1
@@ -277,12 +277,14 @@ library(formattable)
    setcnt1     <- survey.details[1,4]           # -- survey set count year 1
    setcnt2     <- survey.details[2,4]           # -- survey set count year 2
    
+   
    average.ten <- paste("select ROUND(AVG(TOTAL), 0) AS YrAvg ",
                         "from   dbo.TableA2_Annual_sablefish_Landing_in_Can_waters_2 ",
                         "where  (year <= ", yr + 1, ") and (year >= ",yr - 8,")", sep="")
    #avg.Ten.yrs <- GetSQLData(average.ten,"Sablefish")    # -- average catch last 10 years query SQL Server  
    #write.table(avg.Ten.yrs, file = paste(path,"index02.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    avg.Ten.yrs <- read.csv(paste(path,'index02.csv',sep=''),header=T)
+   
    
    trap.catch  <- paste("select  ROUND(TRAP / TOTAL * 100, 0) AS TrapPer ",
                         "from    dbo.TableA2_Annual_sablefish_Landing_in_Can_waters_2 ",  
@@ -291,6 +293,7 @@ library(formattable)
    #write.table(trap.Percent, file = paste(path,"index03.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    trap.Percent<- read.csv(paste(path,'index03.csv',sep=''),header=T)
    
+   
    lgline.catch    <- paste( "select  ROUND(LONGLINE / TOTAL * 100, 0) AS LonglinePer ",  
                              "from    dbo.TableA2_Annual_sablefish_Landing_in_Can_waters_2  ",
                              "where   (year = ", yr, ") group by ROUND(LONGLINE / TOTAL * 100, 0), TOTAL", sep="")
@@ -298,12 +301,14 @@ library(formattable)
    #write.table(longlne.Percent, file = paste(path,"index04.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    longlne.Percent <- read.csv(paste(path,'index04.csv',sep=''),header=T)
    
+   
    trap.catch2   <- paste("select  ROUND(TRAP / TOTAL * 100, 0) AS TrapPer ",
                           "from    dbo.TableA2_Annual_sablefish_Landing_in_Can_waters_2 ",  
                           "where   (year = ", yr + 1, ")  group by ROUND(TRAP / TOTAL * 100, 0), TOTAL", sep="")
    #trap.Percent2 <- GetSQLData(trap.catch2,"Sablefish")      # -- trap gear catch ratio year 2
    #write.table(trap.Percent2, file = paste(path,"index05.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    trap.Percent2 <- read.csv(paste(path,'index05.csv', sep=''),header=T)
+   
    
    longlne.Percent2  <- paste("select  ROUND(LONGLINE / TOTAL * 100, 0) AS LonglinePer  ",  
                          "from    dbo.TableA2_Annual_sablefish_Landing_in_Can_waters_2  ",

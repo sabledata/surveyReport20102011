@@ -4,7 +4,7 @@
 
 Methodology for the `r yr` sablefish research and assessment survey employed a stratified random sampling (StRS) component and a traditional component consisting of standardized sets at offshore indexing localities and at mainland inlets.  In `r yr+1`, fishing at offshore indexing sites was discontinued (Figure \@ref(fig:figure1)).  
 
-Under the StRs component, random fishing sets were conducted in five spatial strata (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)).  The traditional component consisted of standardized fishing sets at nine offshore indexing sites (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)) and at four mainland inlets (Figure \@ref(fig:figure4)).  In addition, exploratory sets were conducted in `r yr+1` at North Vancouver Island near Cliffe Point and Koskimo Bay (Figure \@ref(fig:figure3)). 
+Under the StRs component, random fishing sets were conducted in five spatial strata and three depth strata (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)).  The traditional component consisted of standardized fishing sets at nine offshore indexing sites (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)) and at four mainland inlets (Figure \@ref(fig:figure4)).  In addition, exploratory sets were conducted in `r yr+1` at North Vancouver Island near Cliffe Point and Koskimo Bay (Figure \@ref(fig:figure3)). 
 
 ### STRATIFIED RANDOM SAMPLING SURVEY COMPONENT
 
