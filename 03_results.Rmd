@@ -2,7 +2,7 @@
 
 ## FISHING
 
-The `r yr` survey was 52 days long, starting in Victoria, BC on October 9, with crew changes on October 17 at Gold River, November 1 at Rose Harbour and November 19 at Masset.  In total, 153 sets were completed; 45 standardized sets at offshore indexing localities, 20 standardized sets at mainland inlets and 88 StRS sets at random sites  (Appendix \@ref(app:fifth-appendix)).
+The `r yr` survey was 52 days long, starting in Victoria, BC on October 9, with crew changes on October 17 at Gold River, November 1 at Rose Harbour and November 19 at Masset.  In total, 153 sets were completed; 88 StRS sets at random sites, 45 standardized sets at offshore indexing localities and 20 standardized sets at mainland inlets (Appendix \@ref(app:fifth-appendix)).
 
 The `r yr + 1` survey was 43 days long, commencing in Victoria, BC on October 9, with crew changes on October 20 at Coal Harbour, October 31 at Rose Harbour and November 12 at Masset.  In total, 132 sets were completed; 20 standardized sets at mainland inlets, 110 StRS sets at random sites and 2 sets at exploratory sites.  (Appendix \@ref(app:sixth-appendix)).
 
@@ -66,15 +66,15 @@ The `r yr + 1` survey was 43 days long, commencing in Victoria, BC on October 9,
 
 ### Stratified Random CPUE
 
-In general, catch per unit effort as indexed by kilograms (Figure \@ref(fig:figure7)) and numbers of sablefish  (Figure \@ref(fig:figure8)) per trap, attained the highest catch rates in the middle depth stratum (RD~2~) in most years. The average weight of sablefish over time in the deep (RD~3~)  and shallow waters (RD~1~) tended to be higher in the northern survey areas. In the middle depths (RD~2~), the mean weights were consistently higher in area S~4~ (Figure \@ref(fig:figure9)).  CPUE over the survey years (2003 to 2011) reached over 30 kg/trap and over 11 fish/trap in 2003 and 2006 (Figure \@ref(fig:figure10),a,b), while the average weight of sablefish remained ~ 3 kg  (Figure \@ref(fig:figure10),c).
+In general, catch per unit effort as indexed by kilograms (Figure \@ref(fig:figure7)) and numbers (Figure \@ref(fig:figure8)) of sablefish per trap, attained the highest catch rates in the middle depth stratum (RD~2~) in most years. The average weight of sablefish over time in the deep (RD~3~)  and shallow waters (RD~1~) tended to be higher in the northern survey areas. In the middle depths (RD~2~), the mean weights were consistently higher in area S~4~ (Figure \@ref(fig:figure9)).  CPUE over the survey years (2003 to 2011) reached over 30 kg/trap and over 11 fish/trap in 2003 and 2006 (Figure \@ref(fig:figure10),a,b), while the average weight of sablefish remained ~ 3 kg  (Figure \@ref(fig:figure10),c).
 
-### Offshore Standardized CPUE
+### Offshore Indexing CPUE
 
-Standardized sets were conducted at offshore indexing sites from 1988 through 2010. The 1988 and 1989 standardized catch rates were not included in Figure \@ref(fig:figure7) as the fishing protocols were significantly different than future surveys [@Wyeth2003].  The mean catch rates remained high from 1990 through 1993, with the year 1993 yielding the highest mean catch rate. Then, consistent lower catch rates were exhibited from 1994 to 2002, with the year 2001 yielding the lowest mean catch rate. In 2003 and 2004, the mean catch rates were again higher and similar to those in the first couple years in the 1990’s.  The years 2005 through 2010 show consistently lower catch rates that resemble those in the late 1990’s (Figure \@ref(fig:figure11),a,b).  The mean sablefish weight remained over 3.0 kg for years 1990 - 2010 with the exception of 1990, 2006 and 2007 (Figure \@ref(fig:figure11),c).
+Standardized sets were conducted at offshore indexing sites from 1988 through 2010. The 1988 and 1989 standardized catch rates were not included in Figure \@ref(fig:figure7) as the fishing protocols were significantly different than future surveys [@Wyeth2003].  The mean catch rates remained high from 1990 through 1993, with the year 1993 yielding the highest mean catch rate. Then, consistent lower catch rates were exhibited from 1994 to 2002, with the year 2001 yielding the lowest mean catch rate. In 2003 and 2004, the mean catch rates were again higher and similar to those in the first couple years in the 1990’s.  The years 2005 through 2010 declined to lower catch rates that resembled those in the late 1990’s and year 2000 (Figure \@ref(fig:figure11),a,b).  The mean sablefish weight remained over 3.0 kg for years 1990 to 2010 with the exception of 1990, 2006 and 2007 (Figure \@ref(fig:figure11),c).
 
 ### Mainland Inlet CPUE
 
-CPUE in the mainlaind inlets has varied in a relatively predictable manner over time with peak CPUE occuring every 5-7 years. In the early part of the time series (mid-1990s) average CPUE remained relatively constant before a peak in CPUE was observed in 1999, followed by declines to consistent levels until another peak in 2003 and 2004, and again in 2011 (Figure \@ref(fig:figure12) a,b). The average weight of sablefish was lowest at mainland inlets during these peaks (Figure \@ref(fig:figure12) c).
+CPUE in the mainlaind inlets has varied in a relatively predictable manner over time with peak CPUE occuring every 5-7 years. In the early part of the time series (mid-1990s) average CPUE remained relatively constant before a peak in CPUE was observed in 1999, followed by declines to consistent levels until another peak in 2003 and 2004, and again in 2011 (Figure \@ref(fig:figure12) a,b). Annual mean weights of sablefish over time were less than those at offshore indexing localities (Figure \@ref(fig:figure12) c).
 
 ```{r SpeciesCompositionText, echo=FALSE}
 
@@ -100,8 +100,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                                 "Fish, Rockfish, Flatfish, Invertebrate, Mammal, Bird, SABLE_SET_TYPE, Year, TRIP_ID,  ",
                                 "case when Fish = Rockfish or Fish = Flatfish then 0 ELSE Fish end, SPECIES_CODE  ",
                                 "having (SABLE_SET_TYPE = N'Offshore Standardized') and (Year = ", yr,")) AS RC", sep="")
-   OffS.sp.Comp.yr1    <- GetSQLData(spc.OffS,"Sablefish")
-   write.table(OffS.sp.Comp.yr1 , file = paste(path,"results4a.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #OffS.sp.Comp.yr1    <- GetSQLData(spc.OffS,"Sablefish")
+   #write.table(OffS.sp.Comp.yr1 , file = paste(path,"results4a.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    OffS.sp.Comp.yr1    <-   read.csv(paste(path,'results4a.csv',sep=''),header=T)
    
    roundfish.OffS.count.yr1    <- OffS.sp.Comp.yr1[1,1]
@@ -138,8 +138,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                                 "Fish, Rockfish, Flatfish, Invertebrate, Mammal, Bird, SABLE_SET_TYPE, Year, TRIP_ID,  ",
                                 "case when Fish = Rockfish or Fish = Flatfish then 0 ELSE Fish end, SPECIES_CODE  ",
                                 "having (SABLE_SET_TYPE = N'StRS') and (Year = ", yr,")) AS RC", sep="")
-   strs.sp.Comp.yr1    <- GetSQLData(spc,"Sablefish")
-   write.table(strs.sp.Comp.yr1 , file = paste(path,"results4b.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #strs.sp.Comp.yr1    <- GetSQLData(spc,"Sablefish")
+   #write.table(strs.sp.Comp.yr1 , file = paste(path,"results4b.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    strs.sp.Comp.yr1    <-   read.csv(paste(path,'results4b.csv',sep=''),header=T)
    
    roundfish.StRS.count.yr1    <- strs.sp.Comp.yr1[1,1]
@@ -177,8 +177,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                                  "CASE WHEN Fish = Rockfish or Fish = Flatfish THEN 0 ELSE Fish END, SPECIES_CODE ",
                                  "having (SABLE_SET_TYPE = N'INLET STANDARDIZED')       ",
                                  "and (Year = ",yr,")) AS RC",sep="")
-   inlet.sp.Comp.yr1    <- GetSQLData(spc.Inlet,"Sablefish")
-   write.table(inlet.sp.Comp.yr1, file = paste(path,"results5.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #inlet.sp.Comp.yr1    <- GetSQLData(spc.Inlet,"Sablefish")
+   #write.table(inlet.sp.Comp.yr1, file = paste(path,"results5.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    inlet.sp.Comp.yr1    <- read.csv(paste(path,'results5.csv',sep=''),header=T)
     
    roundfish.Inlet.count.yr1   <- inlet.sp.Comp.yr1[1,1]
@@ -202,8 +202,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                          "having (SABLE_SET_TYPE = N'OFFSHORE STANDARDIZED') and ",
                          "(SPECIES_CODE <> N'455') and (Year = ",yr,") ",
                          "order by catchkg DESC", sep="") 
-   top.OffS.species    <- GetSQLData(topOffS ,"Sablefish") 
-   write.table(top.OffS.species, file = paste(path,"results2a.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #top.OffS.species    <- GetSQLData(topOffS ,"Sablefish") 
+  # write.table(top.OffS.species, file = paste(path,"results2a.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    top.OffS.species  <-  read.csv(paste(path,'results2a.csv',sep=''),header=T)
    
    top.OffS.sp1.yr1   <- tolower(as.character(top.OffS.species[1,1]))                    # -- OffShore top 3 species names
@@ -232,8 +232,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                          "having (SABLE_SET_TYPE = N'StRS') and ",
                          "(SPECIES_CODE <> N'455') and (Year = ",yr,") ",
                          "order by catchkg DESC", sep="") 
-   topStRS.species    <- GetSQLData(topStRS,"Sablefish") 
-   write.table(topStRS.species, file = paste(path,"results2b.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #topStRS.species    <- GetSQLData(topStRS,"Sablefish") 
+   #write.table(topStRS.species, file = paste(path,"results2b.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    topStRS.species  <-  read.csv(paste(path,'results2b.csv',sep=''),header=T)
    
    
@@ -268,8 +268,8 @@ CPUE in the mainlaind inlets has varied in a relatively predictable manner over 
                           having (SABLE_SET_TYPE = N'INLET STANDARDIZED') and (SPECIES_CODE <> N'455') and (Year = ",yr,")
                           order by catchkg DESC", sep="") 
    
-   top.Inlet.sp   <- GetSQLData(topInlet,"Sablefish")   
-   write.table(top.Inlet.sp , file = paste(path,"results3.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")       
+   #top.Inlet.sp   <- GetSQLData(topInlet,"Sablefish")   
+   #write.table(top.Inlet.sp , file = paste(path,"results3.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")       
    top.Inlet.sp   <- read.csv(paste(path,'results3.csv',sep=''),header=T)
 
    top.Inlet.sp1.yr1  <- tolower(as.character(top.Inlet.sp[1,1]))    # -- inlet top 2 species names
@@ -320,8 +320,8 @@ A total of `r total.Inlet.yr1` (`r inlet.sp.Comp.yr1$ntotal`) taxonomic groups w
                                 "Fish, Rockfish, Flatfish, Invertebrate, Mammal, Bird, SABLE_SET_TYPE, Year, TRIP_ID,  ",
                                 "case when Fish = Rockfish or Fish = Flatfish then 0 ELSE Fish end, SPECIES_CODE  ",
                                 "having (SABLE_SET_TYPE = N'StRS') and (Year = ", yr+1,")) AS RC", sep="")
-   strs.sp.Comp.yr2  <- GetSQLData(spc,"Sablefish")
-   write.table(strs.sp.Comp.yr2 , file = paste(path,"results8.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #strs.sp.Comp.yr2  <- GetSQLData(spc,"Sablefish")
+   #write.table(strs.sp.Comp.yr2 , file = paste(path,"results8.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    strs.sp.Comp.yr2   <-   read.csv(paste(path,'results8.csv',sep=''),header=T)
    
    roundfish.StRS.count.yr2   <- strs.sp.Comp.yr2[1,1]
@@ -359,8 +359,8 @@ A total of `r total.Inlet.yr1` (`r inlet.sp.Comp.yr1$ntotal`) taxonomic groups w
                                  "CASE WHEN Fish = Rockfish or Fish = Flatfish THEN 0 ELSE Fish END, SPECIES_CODE ",
                                  "having (SABLE_SET_TYPE = N'INLET STANDARDIZED')       ",
                                  "and (Year = ", yr + 1,")) AS RC", sep="")
-   inlet.sp.Comp.yr2    <- GetSQLData(spc.Inlet,"Sablefish")
-   write.table(inlet.sp.Comp.yr2, file = paste(path,"results9.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #inlet.sp.Comp.yr2    <- GetSQLData(spc.Inlet,"Sablefish")
+   #write.table(inlet.sp.Comp.yr2, file = paste(path,"results9.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    inlet.sp.Comp.yr2     <- read.csv(paste(path,'results9.csv',sep=''),header=T)
     
    roundfish.Inlet.count.yr2   <- inlet.sp.Comp.yr2[1,1]
@@ -385,8 +385,8 @@ A total of `r total.Inlet.yr1` (`r inlet.sp.Comp.yr1$ntotal`) taxonomic groups w
                          "having (SABLE_SET_TYPE = N'StRS') and ",
                          "(SPECIES_CODE <> N'455') and (Year = ",yr +1,") ",
                          "order by catchkg DESC", sep="") 
-   topStRS.species    <- GetSQLData(topStRS,"Sablefish") 
-   write.table(topStRS.species, file = paste(path,"results6.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #topStRS.species    <- GetSQLData(topStRS,"Sablefish") 
+   #write.table(topStRS.species, file = paste(path,"results6.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    topStRS.species  <-  read.csv(paste(path,'results6.csv',sep=''),header=T)
    
    
@@ -421,8 +421,8 @@ A total of `r total.Inlet.yr1` (`r inlet.sp.Comp.yr1$ntotal`) taxonomic groups w
                           having (SABLE_SET_TYPE = N'INLET STANDARDIZED') and (SPECIES_CODE <> N'455') and (Year = ",yr +1,")
                           order by catchkg DESC", sep="") 
    
-   top.Inlet.sp   <- GetSQLData(topInlet,"Sablefish")   
-   write.table(top.Inlet.sp , file = paste(path,"results7.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")       
+   #top.Inlet.sp   <- GetSQLData(topInlet,"Sablefish")   
+   #write.table(top.Inlet.sp , file = paste(path,"results7.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")       
    top.Inlet.sp   <- read.csv(paste(path,'results7.csv',sep=''),header=T)
 
    top.Inlet.sp1.yr2  <- tolower(as.character(top.Inlet.sp[1,1]))    # -- inlet top 2 species names
@@ -459,8 +459,8 @@ A total of eighteen (18) taxonomic groups were represented in the catches from  
                          "dbo.GFBIO_SABLEBIO_TRIP_SET AS rt ON " ,
                          "sd.TRIP_ID = rt.TRIP_ID AND  sd.[SET] = rt.SET_NUMBER " ,
                          "where (sd.Year =", yr,") group by rt.SABLE_SET_TYPE", sep="")
-    count.sample.yr1   <- GetSQLData(sample.yr1,"Sablefish")
-    write.table(count.sample.yr1 , file = paste(path,"results10.csv", sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+    #count.sample.yr1   <- GetSQLData(sample.yr1,"Sablefish")
+    #write.table(count.sample.yr1 , file = paste(path,"results10.csv", sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
     count.sample.yr1    <-  read.csv(paste(path,'results10.csv', sep=''), header=T) 
 
      # --  StRS year one by spatial and depth strata:  count/mean of samples for fork length and tagged fish fork lengths
@@ -469,8 +469,8 @@ A total of eighteen (18) taxonomic groups were represented in the catches from  
                          " from gfbio_sable_bio_summary ",
                          " where  (Depth IN (N'RD1', N'RD2', N'RD3')) and (year = ", yr,
                          " ) order by Locality,Depth", sep="")
-     biosumm  <-   GetSQLData(bioStRS,"Sablefish")
-     write.table(biosumm, file = paste(path,'results13.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+     #biosumm  <-   GetSQLData(bioStRS,"Sablefish")
+     #write.table(biosumm, file = paste(path,'results13.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
      biosumm   <-    read.csv(paste(path,'results13.csv',sep=''),header=T)      
 
      colnames(biosumm) <-  c("Spatial","Depth","Males","Females","Males","Females","Tagged")
@@ -602,8 +602,8 @@ A total of eighteen (18) taxonomic groups were represented in the catches from  
                                     " from  gfbio_sable_bio_summary ",
                                     " where depth is null and (TRADITIONAL_INLET_LOCALITY = 1) and year = ", yr,
                                     " order by Locality", sep="")
-      biosumm.Inlet.yr1  <-   GetSQLData(bio.Inlet.yr1,"Sablefish")
-      write.table( biosumm.Inlet.yr1, file = paste(path,'results15.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
+      #biosumm.Inlet.yr1  <-   GetSQLData(bio.Inlet.yr1,"Sablefish")
+      #write.table( biosumm.Inlet.yr1, file = paste(path,'results15.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
       biosumm.Inlet.yr1  <- read.csv(paste(path,'results15.csv',sep=''),header=T)
 
       colnames(biosumm.Inlet.yr1) <-  c("Spatial","Depth", "Males","Females","Males","Females","Tagged")
@@ -645,14 +645,14 @@ A total of eighteen (18) taxonomic groups were represented in the catches from  
                              " from dbo.GFBIO_RESEARCH_SAMPLE_DETAILS_OTHER_FISH ",
                              " where (Year = ", yr, ") group by species_name, species ",
                              " ORDER BY species", sep="")
-     otherfish    <-   GetSQLData(othfish,"Sablefish")
-     write.table(otherfish , file = paste(path,'results17.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")     
+     #otherfish    <-   GetSQLData(othfish,"Sablefish")
+     #write.table(otherfish , file = paste(path,'results17.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")     
      otherfish    <-    read.csv(paste(path,'results17.csv',sep=''),header=T)
      
 ```
 
 ## SABLEFISH SAMPLING
-### 2010 Survey
+### `r yr` Survey
 
 A detailed breakdown of the fate of the catch in each trap for the `r yr` survey is listed in Appendix \@ref(app:seventh-appendix). 
 
@@ -660,13 +660,13 @@ During the `r yr` StRS, a total of `r format(count.sample.yr1[3,2], big.mark=","
 
 Over the `r yr` standardized offshore sets, a total of `r format(count.sample.yr1[2,2], big.mark=",")` sablefish were caught. Of that total, `r format(count.sample.yr1[2,7], big.mark=",")` were retained for biological sampling and `r count.sample.yr1[2,3]` were previously tagged fish that were re-released with a new tag (Appendix \@ref(app:nineth-appendix)).
 
-Out of the `r format(count.sample.yr1[1,2], big.mark=",")` sablefish captured during the `r yr` inlet standardized sets, `r format(count.sample.yr1[1,5], big.mark=",")` were tagged and released, `r format(count.sample.yr1[1,7], big.mark=",")` were used for biological sampling and `r format(count.sample.yr1[1,3], big.mark=",")` were previously tagged fish re-released with a new tag (Appendix \@ref(app:nineth-appendix)). 
+Out of the `r format(count.sample.yr1[1,2], big.mark=",")` sablefish captured during the `r yr` mainland inlet sets, `r format(count.sample.yr1[1,5], big.mark=",")` were tagged and released, `r format(count.sample.yr1[1,7], big.mark=",")` were used for biological sampling and `r format(count.sample.yr1[1,3], big.mark=",")` were previously tagged fish re-released with a new tag (Appendix \@ref(app:nineth-appendix)). 
 
-Overall, the StRS sets had a higher proportion of females than males over `r stratafemale`.  More females than males were seen in the shallow depth stratum within `r shallsfemale`.  In the mid depth stratum, there were more males than females in `r midsmale`.  The deepest depth stratum saw more females in `r deepsfemale`. The mean fork length for females reached 71 cm in area S~4~ (Table \@ref(tab:Table11)).
+Overall, the StRS sets had a higher proportion of females than males over `r stratafemale`.  More females than males were seen in the shallow depth stratum within `r shallsfemale`.  In the mid depth stratum, there were more males than females in `r midsmale`.  The deepest depth stratum saw more females in `r deepsfemale`. The mean fork length for females reached  `r as.character(round(newdata[16,6]/10,1))` cm in area S~4~ (Table \@ref(tab:Table9)).
 
-The four northern offshore indexing localities of Langara Island-North Frederick, Hippa Island, Buck Point and Gowgaia Bay had a higher proportion of females than males. The remaining south offshore indexing localities had a higher proportion of males than females, with the exception of Esperanza Inlet. The mean fork length for females was 67 cm (Table \@ref(tab:Table9)).
+The four northern offshore indexing localities of Langara Island-North Frederick, Hippa Island, Buck Point and Gowgaia Bay had a higher proportion of females than males. The remaining south offshore indexing localities had a higher proportion of males than females, with the exception of Esperanza Inlet. The mean fork length for females was 67.4 cm (Table \@ref(tab:Table10)).
 
-More females than males were sampled in `r inlet.words.yr1` mainland inlet localities and samples ranged from `r femaleRange.yr1[1]` to `r femaleRange.yr1[2]` percent females. The mean fork length for females was `r round(biosumm.Inlet.yr1[5,6]/10,0)` cm (Table \@ref(tab:Table10)). 
+More females than males were sampled in `r inlet.words.yr1` mainland inlet localities and samples ranged from `r femaleRange.yr1[1]` to `r femaleRange.yr1[2]` percent females. The mean fork length for females was `r as.character(round(biosumm.Inlet.yr1[5,6]/10,1))` cm (Table \@ref(tab:Table11)). 
  
 
 
@@ -685,8 +685,8 @@ More females than males were sampled in `r inlet.words.yr1` mainland inlet local
                          "sd.TRIP_ID = rt.TRIP_ID AND  sd.[SET] = rt.SET_NUMBER " ,
                          "where (sd.Year =", yr+1,") group by rt.SABLE_SET_TYPE", sep="") 
     
-      count.sample.yr2   <- GetSQLData(sample.yr2,"Sablefish")
-      write.table(count.sample.yr2 , file = paste(path,"results11.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
+      #count.sample.yr2   <- GetSQLData(sample.yr2,"Sablefish")
+      #write.table(count.sample.yr2 , file = paste(path,"results11.csv",sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
       count.sample.yr2   <-  read.csv(paste(path,'results11.csv', sep=''), header=T) 
       
       # -- StRS year two
@@ -889,9 +889,9 @@ Out of the `r format(count.sample.yr2[1,2], big.mark=",")` sablefish captured du
 
 During the `r yr+1` exploratory sets, a total of `r format(count.sample.yr2[2,2], big.mark=",")` sablefish were caught.   Of that total, `r format(count.sample.yr2[2,5], big.mark=",")` were tagged and released and `r format(count.sample.yr2[2,7], big.mark=",")` were retained for biological sampling (Appendix \@ref(app:tenth-appendix)).
 
-Overall, the StRS design sets had a higher proportion of females than males over `r stratafemale.2`.  More females than males were seen in the shallow depth stratum within `r shallsfemale.2`.  In the mid depth stratum, there were more males than females in `r midsmale.2`.  The deepest depth stratum saw more females `r deepsfemale.2`.  The mean fork length for females reached 69 cm in area S~4~ (Table \@ref(tab:Table13)).
+Overall, the StRS design sets had a higher proportion of females than males over `r stratafemale.2`.  More females than males were seen in the shallow depth stratum within `r shallsfemale.2`.  In the mid depth stratum, there were more males than females in `r midsmale.2`.  The deepest depth stratum saw more females `r deepsfemale.2`.  The mean fork length for females reached `r as.character(round(newdata.2[16,6]/10,1))` cm in area S~4~ (Table \@ref(tab:Table12)).
 
-More females than males were sampled in `r inlet.words.yr2` traditional mainland inlet localities and samples ranged from `r femaleRange.yr2[1]` to `r femaleRange.yr2[2]` percent females.  The mean fork length for females was `r round(biosumm.Inlet.yr2[5,6]/10,0)` cm (Table \@ref(tab:Table12)).
+More females than males were sampled in `r inlet.words.yr2` traditional mainland inlet localities and samples ranged from `r femaleRange.yr2[1]` to `r femaleRange.yr2[2]` percent females.  The mean fork length for females was `r as.character(round(biosumm.Inlet.yr2[5,6]/10,1))` cm (Table \@ref(tab:Table13)).
 
 
 ```{r LengthDistributionsStRS}
@@ -1129,7 +1129,7 @@ In 2011,  fork length was taken for the `r total.frklen.string2`; snout to anal 
 
 ## RECOVERED TAGGED SABLEFISH
 
-During the `r yr` and `r yr+1` sablefish surveys, `r count.sample.yr1[2,3] + count.sample.yr1[1,3]` and `r count.sample.yr2[2,3] + count.sample.yr2[1,3]` previously tagged fish were re-released live with a new tag, respectively.  DFO has been tagging, releasing and recovering sablefish since 1991.  The highest recovery rate is within the first year of release (Table \@ref(tab:Table14)).
+During the `r yr` and `r yr+1` sablefish surveys, `r count.sample.yr1[1,3] + count.sample.yr1[2,3] + count.sample.yr1[3,3]` and `r count.sample.yr2[1,3] + count.sample.yr2[2,3] + count.sample.yr2[3,3]` previously tagged fish were re-released live with a new tag, respectively.  DFO has been tagging, releasing and recovering sablefish since 1991.  The highest recovery rate is within the first year of release (Table \@ref(tab:Table14)).
 
 
 ```{r SablefishAgesText, echo=FALSE}
@@ -1138,18 +1138,18 @@ During the `r yr` and `r yr+1` sablefish surveys, `r count.sample.yr1[2,3] + cou
    # -- GFBIOSQL.dbo.b21_samples and b22_specimens
    age         <-  paste("select Female_Yr_Total,Age from Report_Survey_GFBIO_Age_MF_Prop where ", 
                          "SetType='StRS' and f=1 and Year=", yr +1 ,sep="")
-   agedat     <-  GetSQLData(age,"Sablefish")    # --  female age total and count of most aged text captions
-   write.table(agedat, file = paste(path,'results20.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")  
+   #agedat     <-  GetSQLData(age,"Sablefish")    # --  female age total and count of most aged text captions
+   #write.table(agedat, file = paste(path,'results20.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")  
    agedat      <-   read.csv(paste(path,'results20.csv',sep=''),header=T) 
    
    oldageF     <-  paste("exec procRReport_Survey_oldAgeFish 2,",yr+1,sep="")  # -- oldest female text caption
-   oldageFem   <-  GetSQLData(oldageF,"Sablefish") 
-   write.table(oldageFem, file = paste(path,'results21.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #oldageFem   <-  GetSQLData(oldageF,"Sablefish") 
+   #write.table(oldageFem, file = paste(path,'results21.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    oldageFem    <-   read.csv(paste(path,'results21.csv',sep=''),header=T) 
    
    oldageM       <-  paste("exec procRReport_Survey_oldAgeFish 1,",yr+1,sep="")  # -- oldest male text caption
-   oldageMale    <-  GetSQLData(oldageM,"sablefish") 
-   write.table(oldageMale, file = paste(path,'results22.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
+   #oldageMale    <-  GetSQLData(oldageM,"sablefish") 
+   #write.table(oldageMale, file = paste(path,'results22.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")    
    oldageMale    <-  read.csv(paste(path,'results22.csv',sep=''),header=T)   
    
    oldest.Female  <-  oldageFem$Age              # -- oldest female age
@@ -1165,7 +1165,7 @@ During the `r yr` and `r yr+1` sablefish surveys, `r count.sample.yr1[2,3] + cou
 
 ## SABLEFISH AGES
 
-The highest proportion of male ages in StRS sets for 2003 through to 2011 were 3, 5, 5, 6, 8, 8, 8, 10 and 12 years of age, respectively (Figure \@ref(fig:figure16), a).  The highest proportion of female ages in the StRS sets for 2003 through to 2011 were 3, 4, 5, 6, 7, 8, 9, 10 and 3 years of age, respectively (Figure \@ref(fig:figure16), b).
+The highest proportion of female ages in StRS sets for 2003 through to 2011 were 3, 5, 5, 6, 8, 8, 8, 10 and 12 years of age, respectively (Figure \@ref(fig:figure16), a).  The highest proportion of male ages in the StRS sets for 2003 through to 2011 were 3, 4, 5, 6, 7, 8, 9, 10 and 3 years of age, respectively (Figure \@ref(fig:figure16), b).
 
 The highest proportion of female ages in offshore indexing sites from 1990 to 1992 were 4, 11 and 7 years of age, respectively.  A cohort appeared in 1993 through to 1998 as 3, 4, 5, 6, 7 and 8 year olds.  The years 1999 to 2003 were dominated by 5 year olds, except 2001, where 6 year olds prevailed.  Another cohort appeared in 2004 through 2010 as 4, 5, 6, 6, 8, 8 and 8 year olds, respectively  (Figure \@ref(fig:figure17), a). 
 
@@ -1177,14 +1177,14 @@ Historic data until `r yr+1` lists the oldest female at `r oldest.Female` years 
      # table SEABIRD_ReportLinePlot created in the Sablefish.dbo.Build_Seabird_tables procedure
     
      whatTrap  <-  paste("select * from SEABIRD_ACCEL_byTrap where year in(",yr,", ", yr+1,") order by [set]",sep="")
-     whatTraps <-  GetSQLData(whatTrap ,"Sablefish")  # in order to be able to comment on which traps the sensors were placed
-     write.table(whatTraps, file = paste(path,'results23.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
+     #whatTraps <-  GetSQLData(whatTrap ,"Sablefish")  # in order to be able to comment on which traps the sensors were placed
+     #write.table(whatTraps, file = paste(path,'results23.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
      whatTraps <-   read.csv(paste(path,'results23.csv',sep=''),header=T)
      #  View(whatTraps)
      
      seabrd    <-  paste("select * from SEABIRD_ReportLinePlot where Year < ", yr+2, sep="")
-     seabird   <-  GetSQLData(seabrd ,"Sablefish") 
-     write.table(seabird, file = paste(path,'results24.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")     
+     #seabird   <-  GetSQLData(seabrd ,"Sablefish") 
+     #write.table(seabird, file = paste(path,'results24.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")     
      seabird   <-  read.csv(paste(path,'results24.csv',sep=''),header=T)
      #  View(seabird)
      
@@ -1230,8 +1230,8 @@ SBE 39 recorders have been placed on survey fishing sets since 2006. In the shal
 ```{r acknowledge, echo=FALSE}
 
     names      <-  paste(" select keyid, Association, year, Names from  dbo.ReportSurvey_Acknowlegdements where year in(", yr,",", yr+1,")", sep="")
-    credits    <-  GetSQLData(names,"Sablefish")
-    write.table(credits, file = paste(path,'results25.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
+    #credits    <-  GetSQLData(names,"Sablefish")
+    #write.table(credits, file = paste(path,'results25.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",")
     credits    <-  read.csv(paste(path,'results25.csv',sep=''),header=T)
     
 ```    

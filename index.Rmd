@@ -15,12 +15,12 @@ address: |
 phone: "(250) 756-7000"
 author_footnote: "Email: Lisa.Lacko@dfo-mpo.gc.ca | telephone: (250) 756-7385"
 abstract: |
-  This document describes sampling activities and summarizes results from the 2010 and 2011 British Columbia sablefish research and assessment surveys. These annual surveys utilized sampling strategies at both stratified random (StRS) sites and traditional inlet sites. In 2010, traditional survey localities were included. The random component was comprised of StRS sets at five depth-stratified areas and the traditional component employed standardized sets at four inlet localities on the mainland.  Standardized fishing sets were conducted under the traditional component at 9 offshore indexing localities.  In total, 28,021 sablefish were caught in 2010, of which 8,076 were used for biological samples and 9,823 were tagged and released. In 2011, a total of 33,650 sablefish were caught, of which 5,965 were used for biological samples and 12,381 were tagged and released. 
+  This document describes sampling activities and summarizes results from the 2010 and 2011 British Columbia sablefish research and assessment surveys. These annual surveys utilized sampling strategies at five depth-stratified random (StRS) sites, nine offshore indexing localities (2010) and four mainland inlet localities. In 2011, fishing at offshore indexing localities was discontinued.  In total, 28,021 sablefish were caught in 2010, of which 8,076 were used for biological samples and 9,823 were tagged and released. In 2011, a total of 33,650 sablefish were caught, of which 5,965 were used for biological samples and 12,381 were tagged and released. 
   
-  Catch per unit effort (CPUE) is an important result from this survey as it is used to infer population trends.  survey data from StRS sets show *****increasing trends in both mean weight and numbers of fish per trap. CPUE at traditional inlet sites have varied in a predictable manner over time with peak CPUE occurring every 5-8 years and increasing to record levels in 2010 and 2011. 
+  Catch per unit effort (CPUE) is an important result from this survey as it is used to infer population trends.  StRS sets in 2010 and 2011 show an increase since 2009 in both mean weight and numbers of fish per trap.  Survey data in the last years at offshore indexing localities reveal a decreasing trend in catch rates similar to those in the late 90's and year 2000. CPUE at mainland inlet sites have varied in a predictable manner over time with peak CPUE occurring every 5-7 years and showing an upward trend in 2010 and 2011. 
 
 abstract_other: |
-  Replace moi....Le présent document décrit les activités d’échantillonnage et résume les résultats des relevés de recherche et d’évaluation de la morue charbonnière menées en Colombie-Britannique en 2018 et 2019. Ces relevés annuels utilisaient les mêmes stratégies d’échantillonnage aux sites aléatoires stratifiés et aux sites traditionnels des bras de mer. La composante aléatoire était composée d’ensembles de sites aléatoires stratifiés dans cinq zones stratifiées en fonction de la profondeur, tandis que la composante traditionnelle était composée d’ensembles normalisés à quatre bras de mer continentaux.  Au total, 58 415 morues charbonnières ont été capturées en 2018, dont 5 741 ont servi à prélever des échantillons biologiques et 10 965 ont été marquées et remises à l’eau. En 2019, un total de 78 836 morues charbonnières ont été capturées, dont 5 659 ont servi à prélever des échantillons biologiques et 12 042 ont été marquées et remises à l’eau.
+  Replace moi....Le présent document décrit les activités d’échantillonnage et résume les résultats des relevés de recherche et d’évaluation de la morue charbonnière menées en Colombie-Britannique en 2010 et 2011. Ces relevés annuels utilisaient les mêmes stratégies d’échantillonnage aux sites aléatoires stratifiés et aux sites traditionnels des bras de mer. La composante aléatoire était composée d’ensembles de sites aléatoires stratifiés dans cinq zones stratifiées en fonction de la profondeur, tandis que la composante traditionnelle était composée d’ensembles normalisés à quatre bras de mer continentaux.  
 
 
 
@@ -265,14 +265,16 @@ library(formattable)
    #write.table(survey.details, file = paste(path,"index01.csv",sep=''),row.names=FALSE, na="",col.names=TRUE,  sep=",") 
    survey.details   <- read.csv(paste(path,'index01.csv', sep=''),header=T)  
    
-   boat1       <- simpleCap(tolower(survey.details[1,1]))      # -- vessel name year 1
+   boat1       <- simpleCap(tolower(survey.details[1,1]))      # -- vessel name year 1 and 2 for 2010 and 2011
    boat2       <- simpleCap(tolower(survey.details[2,1]))      # -- vessel name year 2
    
    captain1    <- simpleCap(tolower(survey.details[1,2]))      # -- captain name year 1
    captain2    <- simpleCap(tolower(survey.details[2,2]))      # -- captain name year 2
 
    dates1      <- survey.details[1,3]           # -- survey start and end dates year 1
+   dates1      <- trimws(dates1)
    dates2      <- survey.details[2,3]           # -- survey start and end dates year 2
+   dates2      <- trimws(dates2)
    
    setcnt1     <- survey.details[1,4]           # -- survey set count year 1
    setcnt2     <- survey.details[2,4]           # -- survey set count year 2

@@ -2,7 +2,7 @@
 
 ## SURVEY DESIGN
 
-Methodology for the `r yr` sablefish research and assessment survey employed a stratified random sampling (StRS) component and a traditional component consisting of standardized sets at offshore indexing localities and at mainland inlets.  In `r yr+1`, fishing at offshore indexing sites was discontinued (Figure \@ref(fig:figure1)).  
+Design for the `r yr` and  `r yr + 1` sablefish research and assessment survey employed a stratified random sampling (StRS) component and a traditional component consisting of standardized sets at offshore indexing localities and at mainland inlets.  In `r yr+1`, fishing at offshore indexing sites was discontinued (Table \@ref(tab:Table1)).  
 
 Under the StRs component, random fishing sets were conducted in five spatial strata and three depth strata (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)).  The traditional component consisted of standardized fishing sets at nine offshore indexing sites (Figure \@ref(fig:figure2), and Figure \@ref(fig:figure3)) and at four mainland inlets (Figure \@ref(fig:figure4)).  In addition, exploratory sets were conducted in `r yr+1` at North Vancouver Island near Cliffe Point and Koskimo Bay (Figure \@ref(fig:figure3)). 
 
@@ -10,7 +10,7 @@ Under the StRs component, random fishing sets were conducted in five spatial str
 
 The StRS design began in 2003 with the purpose of distributing tag releases at random, collecting biological samples and developing a catch-rate based index of abundance [@Wyeth2003]. It also provided an alternative design to the historic traditional offshore component of the survey (1990 to 2010) which occured at fixed locations. 
 
-Under the StRS design, the offshore survey area is partitioned into five spatial strata (S~1~ to S~5~) and three depth strata (RD~1~ to RD~3~) for a total of 15 strata. The five spatial strata are S~1~ (South West Coast Vancouver Island or SWCVI), S~2~ (North West Coast Vancouver Island or NWCVI), S~3~ (Queen Charlotte Sound or QCS), S~4~ (South West Coast of Haida Gwaii or SWCHG), and S~5~ (North West Coast of Haida Gwaii or NWCHG).  The three targeted depth ranges are 100-250 fathoms (RD~1~), 250-450 fathoms (RD~2~), and 450-750 fathoms(RD~3~). The area within each of the 15 strata are divided into 2 km x  2 km grid cells or ‘fishing blocks’ from which set locations are randomly chosen. (Figure \@ref(fig:figure1)).  
+Under the StRS design, the offshore survey area is partitioned into five spatial strata (S~1~ to S~5~) and three depth strata (RD~1~ to RD~3~) for a total of 15 strata. The five spatial strata are S~1~ (South West Coast Vancouver Island or SWCVI), S~2~ (North West Coast Vancouver Island or NWCVI), S~3~ (Queen Charlotte Sound or QCS), S~4~ (South West Coast of Haida Gwaii or SWCHG), and S~5~ (North West Coast of Haida Gwaii or NWCHG).  The three targeted depth ranges are 100-250 fathoms (RD~1~), 250-450 fathoms (RD~2~), and 450-750 fathoms(RD~3~). The area within each of the 15 strata are divided into 2 km x  2 km grid cells or ‘fishing blocks’ from which set locations are randomly chosen (Figure \@ref(fig:figure1)).  
 
 From 2003 through 2005, five grid cells were randomly selected in each spatial-depth stratum. From 2006 through 2010, the number was increased to six. An analysis was completed for the 2011 survey to optimize the allocation of blocks to strata, resulting in an increase in sets in most stratum (Table \@ref(tab:Table2)). 
 
@@ -30,7 +30,7 @@ To evaluate areas that have not been surveyed for sablefish density and/or size 
 
 ## VESSEL
 
-The `r yr` and `r yr + 1` surveys were chartered aboard the F/V `r boat1` (Figure \@ref(fig:figure5)), skippered by `r captain1` between `r dates1`, `r yr` and `r captain2` between `r dates2`,`r yr + 1` (Appendix \@ref(app:second-appendix)).  Further information about the vessel can be found at [\underline{http://marinetraffic.com}](http://marinetraffic.com). 
+The `r yr` and `r yr + 1` surveys were chartered aboard the F/V `r boat1` (Figure \@ref(fig:figure5)), skippered by `r captain1` between `r dates1`, `r yr` and `r captain2` between `r dates2`, `r yr + 1` (Appendix \@ref(app:second-appendix)).   Further information about the vessel can be found at [\underline{http://marinetraffic.com}](http://marinetraffic.com). 
 
 ```{r fishingGear2010-2011, echo=FALSE}
 # location for fishing gear and schedules: 
@@ -47,9 +47,9 @@ Standard bait bags (6 by 12 inches) made of 1/8 inch web with a nylon drawstring
 
 ## FISHING OPERATIONS
 
-During normal survey fishing operations gear was deployed on alternate days. Prior to deployment, the Fishing Master inspected the block to determine fishability and if it was within the targeted depth range.  The goal was to have as much gear as possible within the block boundaries.  If unfishable, the survey protocol dictates that an alternate block is to be chosen to the east, west, north, and south, respectively. If none of those blocks meet the fishing criteria, an alternate block of the same area and depth strata was randomly chosen.
+During normal survey fishing operations gear was deployed on alternate days. Prior to deployment, the Fishing Master inspected the block to determine fishability and if it was within the targeted depth range.  The goal was to have as much gear as possible within the block boundaries.  If unfishable, the survey protocol directs that an alternate block is to be chosen to the east, west, north, and south, respectively. If none of those blocks meet the fishing criteria, an alternate block of the same area and depth strata was randomly chosen.
 
-Two science staff recorded information associated with the deployment of the gear. One science member was positioned in the wheelhouse and entered details about the set in the bridge log data form (Appendix \@ref(app:third-appendix), Figure C.1). The time at the deployment of the first buoy and anchor were logged and later, the time at the retrieval of the second buoy and anchor.  The duration of the set was calculated as the time elapsed between the first anchor being set over the stern and the first anchor hauled aboard.  The geo-referenced positions were obtained from Nobeltec Navigation © software running on the bridge computer, delivered through a NMEA data string. 
+Two science staff recorded information associated with the deployment of the gear. One science member was positioned in the wheelhouse and entered details about the set in the bridge log data form (Appendix \@ref(app:third-appendix), Figure C.1). The time at deployment of the first buoy and anchor were logged and later, the time at retrieval of the second buoy and anchor were recorded.  The duration of the set was calculated as the time elapsed between the first anchor being set over the stern and the first anchor hauled aboard.  The geo-referenced positions were obtained from Nobeltec Navigation © software running on the bridge computer, transmitted through NMEA sentences. 
 
 A set log was filled out on the deck by the science recorder who had maximum visibility of the crew setting the traps over the stern rail. The set log included the time and identity of the first and last buoys, anchor time, a tally of beckets and traps, as well as the serial number of each Sea-bird Bird SBE 39 temperature and pressure logger.
 
@@ -57,17 +57,21 @@ Sets at offshore indexing localities (2010) had a targeted soak time of 24 hours
 
 ## CATCH PROCESSING
 
-As the groundline was hauled, catch by species from each trap were sorted into baskets and entered in the charter catch log form (Appendix \@ref(app:third-appendix), Figure C.2).  Baskets were then weighed to the nearest 0.2 kg on a motion compensating scale and given a basket use code of D, A, B (2010), T or MT.  Code D designated fish species as discards (alive); code A allocated fish to age samples; code B (2010) allocated sablefish for length, sex, maturtiy samples; code T allocated sablefish to be tagged and released; code L allocated fish for length samples; and code MT indicated an empty trap.  Trace values (TR) were entered to record species with a total weight of less than 1 kg.  Crew members would inform the recorder about any damage to a trap and report the serial number of the temperature and pressure logger.  The next
+As the groundline was hauled, catch by species from each trap were sorted into baskets and entered in the charter catch log form (Appendix \@ref(app:third-appendix), Figure C.2).  Baskets were then weighed to the nearest 0.2 kg on a motion compensating scale and given a basket use code of D, A, B (2010), T or MT.  Code D designated fish species as discards (alive); code A allocated fish to age samples; code B (2010) allocated sablefish for length, sex, maturtiy samples; code T allocated sablefish to be tagged and released; code L allocated fish for length samples; and code MT indicated an empty trap. 
+
+The Federal Court of Appeal ruling (Larocque v. Canada (Minister of Fisheries and Oceans Canada) (Federal Court of Appeal Canada 2006)) was used to support scientific research of key
+commercial fish in place of quota allocation. As a result, sablefish in traps assigned code D were released at sea.
+
+Crew members would inform the recorder about any damage to a trap and report the serial number of the temperature and pressure logger.  The next
 day, the entries on charter catch log form were transposed to tabular format on the charter catch log entry form (Appendix \@ref(app:third-appendix), Figure C.3).
 
 ### Sablefish Allocation Details
 
-In 2010, 50 to 60 sablefish at offshore indexing sites were allocated throughout the string for a biological sample of length, sex, weight, maturity and otoliths (LSWMO) and up to 80 sablefish were allocated along the string for a biological sample of length, sex and maturity (LSM).  StRS sets used a sampling protocol that assigned a fate to the sablefish catch in each trap, dividing the 25 traps so that 1/3 of the traps were used for tagging, 1/3 were used for biological samples (~50 specimens) and 1/3 were released alive. At mainland inlet sites, sablefish catch from 1/2 of the traps were allocated for biosamples (~50 specimens) and 1/2 of the traps were used for tagging (Table \@ref(tab:Table1)).
+In 2010, 50 to 60 sablefish at offshore indexing sites were allocated throughout the string for a biological sample of length, sex, weight, maturity and otoliths (LSWMO). Up to 80 sablefish were allocated along the string for a biological sample of length, sex and maturity (LSM).  StRS sets used a sampling protocol that assigned a fate to the sablefish catch in each trap, dividing the 25 traps so that 1/3 of the traps were used for tagging, 1/3 were used for biological samples (~50 specimens) and 1/3 were released alive. At mainland inlet sites, sablefish catch from 1/2 of the traps were allocated for biosamples (~50 specimens) and 1/2 of the traps were used for tagging (Table \@ref(tab:Table1)).
 
 ## BIOLOGICAL SAMPLING
 
-Biological samples were collected from sablefish and rougheye/blackspotted rockfish specimens on the LSWMO form (Appendix \@ref(app:third-appendix), Figure C.4).
-Measurements were recorded for fork length (L), body weight (W), sex (S) and maturity level (M). Sagittal otoliths (O) were collected and stored for potential ageing by the sclerochronology laboratory.  In addition, tissue for DNA was collected from the rougheye/blackspotted rockfish complex for later species determination (Appendix \@ref(app:third-appendix), Figure C.5).  Since this complex of two distinct species [@Orr2008] have similar appearances with slight variations in colour markings and dorsal fin lengths, the sampler visually identifed each specimen as either a rougheye, a blackspotted or a hybrid species.  All rockfish and legal-sized sablefish (fork length > 55 cm) that were sacrificed for biological samples were dressed, frozen, and landed as commercial catch.  
+Biological samples were collected from sablefish and rougheye/blackspotted rockfish on the LSWMO form (Appendix \@ref(app:third-appendix), Figure C.4).  Measurements were recorded for fork length (L), body weight (W), sex (S) and maturity level (M). Sagittal otoliths (O) were collected and stored for potential ageing by the sclerochronology laboratory.  In addition, tissue for DNA was collected from the rougheye/blackspotted rockfish specimens for later species determination (Appendix \@ref(app:third-appendix), Figure C.5).  Since this complex of two distinct species [@Orr2008] have similar appearances with slight variations in colour markings and dorsal fin lengths, the sampler visually identifed each specimen as either a rougheye (RE), a blackspotted (BS) or a hybrid (HB) species.  All rockfish and legal-sized sablefish (fork length greater than 55 cm) that were sacrificed for biological samples were dressed, frozen, and landed as commercial catch.  
 
 In 2010, biological samples at offshore indexing localities were obtained from sablefish on the length, sex and maturity (LSM) sampling form (Appendix \@ref(app:third-appendix), Figure C.6). Biological sampling forms were completed for specimens other than sablefish. Species specific length (L) and sex (S) were collected from other species on the LSS form (Appendix \@ref(app:third-appendix), Figure C.7).  
 
@@ -82,7 +86,7 @@ Any previously tagged fish brought aboard were treated in one of two ways.  Firs
 
 
 ```{r SensorText, echo=FALSE}
-   # -- oceanographic sensor text:  determine the number of sets that deployed SBE and HOBO and CTD
+   # -- oceanographic sensor text:  determine the number of sets that deployed SBE and/or HOBO and/or CTD
 
    sense  <-  paste("select Year, SUM(SBE39) AS SBE39, SUM(HOBO) AS HOBO, ",
                     "SUM(CTD) AS CTD, SUM(CAM) AS CAM ",
@@ -104,12 +108,12 @@ Any previously tagged fish brought aboard were treated in one of two ways.  Firs
 
 ## OCEANOGRAPHIC SENSOR DATA COLLECTION
 
-A Sea-bird Bird SBE 39 temperature and pressure logger was placed in a protective plastic pipe and attached to the inside of the third traps on each string.    The logger data in the form of temperature, depth, date and time was downloaded after hauling using the Sea-Bird Electronics SeaTerm © software. 
+A Sea-bird Bird SBE 39 temperature and pressure logger was placed in a protective plastic pipe and attached to the inside of the third trap on each string.    The logger data in the form of temperature, depth, date and time was downloaded after hauling using the Sea-Bird Electronics SeaTerm © software. 
 
 
 ## ELECTRONIC MONITORING VIDEO DATA COLLECTION  
 
-During haulback, the electronic monitoring (EM) system cameras were activated by the hydraulic sensor.  Standard analog cameras were positioned at optimal viewing angles to record survey activities (Appendix \@ref(app:fourth-appendix)).  Video of catch processed at the hopper was reviewed following the survey in 2010 and corrections were made during post-electronic data entry.  In 2011, the video was reviewed the day after haulback to increase quality standards of catch data.
+During haulback, the electronic monitoring (EM) system cameras were activated by the hydraulic sensor.  Standard analog cameras were positioned at optimal viewing angles to record survey activities (Appendix \@ref(app:fourth-appendix)).  Video of catch processed at the hopper was reviewed following the survey in 2010 and corrections were made during post-electronic data entry.  In 2011, the video was reviewed the day after haulback to increase the quality standards of catch data.
 
 
 \clearpage

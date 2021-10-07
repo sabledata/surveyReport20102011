@@ -1,14 +1,14 @@
 # Figures
 
-(ref:figure1) Location of the boundaries of the mainland inlet localities, offshore indexing localities (2010), exploratory sites (2011) and the five spatial areas (S~1~-S~5~) of the stratified random survey design. The three depths strata (RD~1~-RD~3~) are colour-coded and nested within each of the five spatial strata. 
+(ref:figure1) Location of the boundaries of the offshore indexing localities (2010), mainland inlet localities (2010-2011),  exploratory sites (2011) and the five spatial areas (S~1~-S~5~) of the stratified random survey design (2010-2011). The three depths strata (RD~1~-RD~3~) are colour-coded and nested within each of the five spatial strata. 
 
-```{r figure1, fig.cap='(ref:figure1)', warning=FALSE, echo=FALSE, dpi=550, out.width = "430px", out.height = "510px", fig.align="center"}
+```{r figure1, fig.cap='(ref:figure1)', warning=FALSE, echo=FALSE, dpi=550, out.width = "415px", out.height = "510px", fig.align="center"}
       img <- paste(figpath,'Figure1.png',sep="") 
       knitr::include_graphics(img)
 ```
 \clearpage
 
-(ref:figure2)  Start locations of the `r yr` standardized sets (yellow markers) conducted at offshore indexing localities and StRS sets (red markers) conducted in spatial stratum areas S~1~ through S~5~.
+(ref:figure2)  Start locations of the `r yr` StRS sets (red markers) conducted in spatial stratum areas S~1~ through S~5~ and standardized sets (yellow markers) conducted at offshore indexing localities.
 
 ```{r figure2, fig.cap='(ref:figure2)', out.width = "450px", out.height = "580px", fig.align="center", warning=FALSE, echo=FALSE, message=FALSE, error=FALSE}
       img <- paste(figpath,'Figure2.png'  ,sep="")
@@ -16,7 +16,7 @@
 ```
 \clearpage
 
-(ref:figure3)  Start locations of the `r yr+1` exploratory sets (purple markers) and StRS sets (red markers) conducted in spatial stratum areas S~1~ through S~5~.
+(ref:figure3)  Start locations of the `r yr+1` StRS sets (red markers) and exploratory sets (purple markers) conducted in spatial stratum areas S~1~ through S~5~.
 
 ```{r figure3, fig.cap='(ref:figure3)', out.width = "450px", out.height = "580px", fig.align="center", warning=FALSE, echo=FALSE, message=FALSE, error=FALSE}
       img <- paste(figpath,'Figure3.png'  ,sep="")
@@ -25,7 +25,7 @@
 \clearpage
 
 (ref:figure4) Location of the `r yr` and `r yr+1` standardized sets within the mainland inlet localities.  
-```{r figure4, fig.cap='(ref:figure4)', out.width = "450px", out.height = "570px", echo=FALSE, fig.align="center", warning=FALSE}
+```{r figure4, fig.cap='(ref:figure4)', out.width = "440px", out.height = "570px", echo=FALSE, fig.align="center", warning=FALSE}
       img <- paste(figpath,'Figure4.png'  ,sep="")
       knitr::include_graphics(img)
 ```
@@ -48,7 +48,7 @@
 \clearpage
 
 
-(ref:figure7defunct) Sablefish catch per unit effort (CPUE) by depth and year for StRS sets. Dashed lines delineate depth strata (shallow(RD~1~) = 100-450m, mid(RD~2~) = 450-850m, deep(RD~3~) = 850-1400m).
+(ref:figure7defunct) Sablefish catch per unit effort (CPUE) by depth and year for StRS sets. Dashed lines delineate depth strata (shallow(RD~1~) = 100-450 m, mid(RD~2~) = 450-850 m, deep(RD~3~) = 850-1400 m).
 
 ```{r figure7defunct,echo=FALSE, warning=FALSE}
     par(mfcol=c(3,3))
@@ -491,7 +491,7 @@
 
 \clearpage
 
-(ref:figure13) Length frequencies for female (grey) and male sablefish (blue) up to `r yr+1` for all StRS sets.  The number of specimens is denoted by the letter n, the mean indicated by xbar $\overline{x}$ and the standard deviation is represented by sigma $\Sigma$ (A). Average length and ratios of male and female sablefish by year. Numbers of fish are shown across the top of the lines (B).
+(ref:figure13) Length frequencies for female (grey) and male sablefish (blue) up to `r yr+1` for all StRS sets.  The number of specimens is denoted by the letter n, the mean indicated by xbar $\overline{x}$ and the standard deviation is represented by sigma $\sigma$ (A). Average length and ratios of male and female sablefish by year. Numbers of fish are shown across the top of the lines (B).
 
 ```{r figure13, fig.cap='(ref:figure13)',results='asis', out.width = "450px",out.height = "550px", fig.align="center"}
 
@@ -505,7 +505,7 @@
     # -- Sablefish.dbo.procReport_Survey_LenMF pulls length data from table GFBIO_SABLEBIO_VW for StRS
     # -- from procedure Build_BIO_Sablefish_Tables for the histogram of lengths
     
-    lengthdat.StRS     <-   "exec procReport_Survey_LenMF"   # StRS lengths for sex 0,1,2  
+    lengthdat.StRS      <-   "exec procReport_Survey_LenMF"   # StRS lengths for sex 0,1,2  
     #lengthdata.StRS    <-   GetSQLData(lengthdat.StRS,"Sablefish")
     #write.table(lengthdata.StRS, file = paste(path,'figure13.csv',sep=''), row.names=FALSE, na="",col.names=TRUE,  sep=",") 
     lengthdata.StRS    <- read.csv(paste(path,"figure13.csv",sep=""), header=T)
@@ -577,7 +577,7 @@
     fig <- par("fig")
     x <- x[1] + (x[2] - x[1]) * fig[1:2]
     y <- y[1] + (y[2] - y[1]) * fig[3:4]
-    txt <- "A"
+    txt <- "A"    # label with A
     x <- x[1] + strwidth(txt, cex=3) / 2
     y <- y[2] - strheight(txt, cex=3)/ 2
     text(x, y, txt, cex=1.5)
@@ -625,10 +625,10 @@
     fig <- par("fig")
     x <- x[1] + (x[2] - x[1]) * fig[1:2]
     y <- y[1] + (y[2] - y[1]) * fig[3:4]
-    txt <- "B"
+    txt <- "B"    # label with B
     x <- x[1] + strwidth(txt, cex=3) / 2
     y <- y[2] - strheight(txt, cex=3)/ 2
-    text(x, y, txt, cex=1.0)
+    text(x, y, txt, cex=1.5)
     
     while (!is.null(dev.list()))  dev.off()  
     img14 <- paste(paste(figpath,'figure13.png',sep='')) 
@@ -637,7 +637,7 @@
 ``` 
 \clearpage
 
-(ref:figure14) Length frequencies for female (grey) and male sablefish (blue) up to `r yr` for all offshore indexing sets.  The number of specimens is denoted by the letter n, the mean indicated by xbar $\overline{x}$ and the standard deviation is represented by sigma $\Sigma$ (A). Average length and ratios of male and female sablefish by year. Numbers of fish are shown across the top of the lines (B).
+(ref:figure14) Length frequencies for female (grey) and male sablefish (blue) up to `r yr` for all offshore indexing sets.  The number of specimens is denoted by the letter n, the mean indicated by xbar $\overline{x}$ and the standard deviation is represented by sigma $\sigma$ (A). Average length and ratios of male and female sablefish by year. Numbers of fish are shown across the top of the lines (B).
 
 ```{r figure14, fig.cap='(ref:figure14)',results='asis', out.width = "450px",out.height = "550px", fig.align="center"}
 

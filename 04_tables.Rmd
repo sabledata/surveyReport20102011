@@ -154,8 +154,8 @@
 
   options(knitr.kable.NA = '')
   data.species   <- paste("exec procRReport_SpeciesSummary ", yr," ,'StRS'",sep="")
-  data.sp.strs  <- GetSQLData(data.species,"Sablefish")
-  write.table(data.sp.strs, file = paste(path,"Table03.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #data.sp.strs  <- GetSQLData(data.species,"Sablefish")
+  #write.table(data.sp.strs, file = paste(path,"Table03.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.strs   <-  read.csv(paste(path,'Table03.csv',sep=''), header=T)
      
   data.sp.strs1              <- data.sp.strs[,c(-1,-3,-4,-9)] # remove columns
@@ -197,8 +197,8 @@
 
   options(knitr.kable.NA = '')
   data.species   <- paste("exec procRReport_SpeciesSummary ", yr," ,'OFFSHORE STANDARDIZED'",sep="")  # procedure from SQL server
-  data.sp.strs  <- GetSQLData(data.species,"Sablefish")
-  write.table(data.sp.strs, file = paste(path,"Table04.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #data.sp.strs  <- GetSQLData(data.species,"Sablefish")
+  #write.table(data.sp.strs, file = paste(path,"Table04.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.strs   <-  read.csv(paste(path,'Table04.csv',sep=''), header=T)
      
   data.sp.strs1               <- data.sp.strs[,c(-1,-3,-4,-9)]     # remove columns
@@ -240,8 +240,8 @@
 
   options(knitr.kable.NA = '')
   data.species    <- paste("exec procRReport_SpeciesSummary ",yr," ,'INLET STANDARDIZED'",sep="")
-  data.sp.inlet  <- GetSQLData(data.species,"Sablefish")
-  write.table(data.sp.inlet, file = paste(path,"Table05.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #data.sp.inlet  <- GetSQLData(data.species,"Sablefish")
+  #write.table(data.sp.inlet, file = paste(path,"Table05.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.inlet   <-  read.csv(paste(path,'Table05.csv',sep=''), header=T)
   
   data.sp.inlet1             <- data.sp.inlet[,c(-1,-3,-4,-9)] # remove columns
@@ -281,8 +281,8 @@
 
   options(knitr.kable.NA = '')
   data.species   <- paste("exec procRReport_SpeciesSummary ", yr+1," ,'StRS'",sep="")
-  data.sp.strs   <- GetSQLData(data.species,"Sablefish")
-  write.table(data.sp.strs, file = paste(path,"Table06.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #data.sp.strs   <- GetSQLData(data.species,"Sablefish")
+  #write.table(data.sp.strs, file = paste(path,"Table06.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.strs   <-  read.csv(paste(path,'Table06.csv',sep=''), header=T)
   
   data.sp.strs2 <- data.sp.strs[,c(-1,-3,-4,-9)] # remove columns
@@ -325,8 +325,8 @@
 
   options(knitr6.kable.NA = '')
   dtSP          <- paste("exec procRReport_SpeciesSummary ",yr+1," ,'INLET STANDARDIZED'",sep="")
-  datSP        <- GetSQLData(dtSP,"Sablefish")
-  write.table(datSP, file = paste(path,"Table07.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #datSP        <- GetSQLData(dtSP,"Sablefish")
+  #write.table(datSP, file = paste(path,"Table07.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.inlet <-  read.csv(paste(path,'Table07.csv',sep=''), header=T)
   
   data.sp.inlet2             <- data.sp.inlet[,c(-1,-3,-4,-9)]   # remove columns
@@ -366,8 +366,8 @@
 
   options(knitr.kable.NA = '')
   dtSP            <- paste("exec procRReport_SpeciesSummary ",yr+1," ,'NO SET TYPE'",sep="")
-  datSP          <- GetSQLData(dtSP,"Sablefish")
-  write.table(datSP, file = paste(path,"Table08.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #datSP          <- GetSQLData(dtSP,"Sablefish")
+  #write.table(datSP, file = paste(path,"Table08.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   data.sp.explore <-  read.csv(paste(path,'Table08.csv',sep=''), header=T)
   
   data.sp.explore2              <- data.sp.explore[,c(-1,-3,-4,-9)] # remove columns
@@ -399,7 +399,9 @@
 
 ```
 \clearpage
-(ref:table9Caption) Summary of sablefish biological data collected at the  `r yr` StRS sites.
+(ref:table9Caption) Summary of sablefish biological data collected at the `r yr` stratified random survey (StRS) sites.
+\ \
+\ \
 
 ```{r Table9, echo=FALSE}
 
@@ -462,9 +464,11 @@
                       column_spec(7, width  = "1.2cm")
       
 ```
-
+\ \
+\ \
 (ref:Table10Caption) Summary of sablefish biological data collected at the `r yr` offshore localities.
-
+\ \
+\ \
 ```{r Table10, echo=FALSE}
 
   options(knitr.kable.NA = '')
@@ -472,8 +476,8 @@
                              " MalesMnFkLen, FemalesMnFkLen from  dbo.GFBIO_SABLE_BIO_SUMMARY ",
                              " where (Year = ", yr, ") AND (TRADITIONAL_OFFSHORE_INDEXING = 1) ",
                              " order by Locality, Depth", sep="")
-  bio.summary.trad  <- GetSQLData(bio.summary, "Sablefish")
-  write.table(bio.summary.trad, file = paste(path,"Table10.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+  #bio.summary.trad  <- GetSQLData(bio.summary, "Sablefish")
+  #write.table(bio.summary.trad, file = paste(path,"Table10.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
   bio.summary.trad  <-  read.csv(paste(path,'Table10.csv',sep=''), header=T)
   
   bio.summary.trad          <-  bio.summary.trad[,c(-1,-3,-4)]  # remove some columns
@@ -511,16 +515,17 @@
 ```
 \clearpage
 
-(ref:table11Caption) Summary of sablefish biological data collected at the  `r yr` inlet sites.
-
+(ref:table11Caption) Summary of sablefish biological data collected at the  `r yr` mainland inlet sites.
+\ \
+\ \
 ```{r Table11, echo=FALSE}
 
     bio.summaryI        <- paste(" select Locality, PropMales, PropFemales, ",
                                  " MalesMnFkLen, FemalesMnFkLen, TaggedMnFkLen from  dbo.GFBIO_SABLE_BIO_SUMMARY ",
                                  " where (Year = ", yr, ") AND (TRADITIONAL_INLET_LOCALITY = 1) ", 
                                  " ORDER BY Locality DESC", sep="")
-    bio.summary.inlet  <- GetSQLData(bio.summaryI, "Sablefish")
-    write.table(bio.summary.inlet, file = paste(path,"Table11.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+    #bio.summary.inlet  <- GetSQLData(bio.summaryI, "Sablefish")
+    #write.table(bio.summary.inlet, file = paste(path,"Table11.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
     bio.summary.inlet   <-  read.csv(paste(path,'Table11.csv',sep=''), header=T)
     
     bio.summary.inlet$Locality  <-  as.character(bio.summary.inlet$Locality)
@@ -554,7 +559,7 @@
 ```
 \ \
 \ \
-(ref:table12Caption) Summary of sablefish biological data collected at the `r yr+1` StRS sites.
+(ref:table12Caption)  Summary of sablefish biological data collected at the `r yr+1` stratified random survey (StRS) sites.
 \ \
 \ \
 
@@ -631,7 +636,7 @@
                                    " ORDER BY Locality DESC", sep="")
     bio.summary.inlet2   <-  GetSQLData(bio.summaryI2, "Sablefish")
     write.table(bio.summary.inlet2, file = paste(path,"Table13.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
-    bio.summary.inlet2   <-  read.csv(paste(path,'Table12.csv',sep=''), header=T)
+    bio.summary.inlet2   <-  read.csv(paste(path,'Table13.csv',sep=''), header=T)
     
     bio.summary.inlet2$Locality <-  as.character(bio.summary.inlet2$Locality) # change to character column
     bio.means.line2             <-  c('Mean', 
@@ -685,8 +690,8 @@
                         "Rec_2009 as [09], Rec_2010 as [10], Rec_2011 as [11], ", 
                         "Total_recovered as [Total], No_recovery_year as [No Year] ",
                         "from dbo.WEB_TAG_REVIEW where [Release year] <= ", yr+1, "order by [Release year]",sep="")
-   data.tag.rel <- GetSQLData(tag.release,"FishTag")
-   write.table(data.tag.rel, file = paste(path,"table14.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
+   #data.tag.rel <- GetSQLData(tag.release,"FishTag")
+   #write.table(data.tag.rel, file = paste(path,"table14.csv",sep=''),row.names=FALSE, na="",col.names=TRUE, sep=",")
    data.tag.rel  <- read.csv(paste(path,'table14.csv',sep=''), header=T)
 
    data.tag.rel$Release  <- formatC(data.tag.rel$Release, format="d", big.mark=",") # separate numbers with commas

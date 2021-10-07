@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {2.4}FISHING OPERATIONS}{3}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}CATCH PROCESSING}{4}{subsection.2.5}%
 \contentsline {subsubsection}{\numberline {2.5.1}Sablefish Allocation Details}{4}{subsubsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.6}BIOLOGICAL SAMPLING}{4}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.6}BIOLOGICAL SAMPLING}{5}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}SABLEFISH TAGGING}{5}{subsection.2.7}%
 \contentsline {subsection}{\numberline {2.8}SABLEFISH TAG RECOVERY}{5}{subsection.2.8}%
 \contentsline {subsection}{\numberline {2.9}OCEANOGRAPHIC SENSOR DATA COLLECTION}{5}{subsection.2.9}%
@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.1}FISHING}{7}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}CATCH PER UNIT EFFORT (CPUE)}{7}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Stratified Random CPUE}{7}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Offshore Standardized CPUE}{7}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2}Offshore Indexing CPUE}{7}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Mainland Inlet CPUE}{8}{subsubsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.3}CATCH COMPOSITION}{8}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}2010 Survey}{8}{subsubsection.3.3.1}%
